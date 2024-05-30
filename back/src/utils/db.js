@@ -1,12 +1,8 @@
 
-
-const mongoose = require ('mongoose');
-const dotenv = require("dotenv");
-dotenv.config()
-
+const mongoose = require ('mongoose'); /*si trabajamos en remoto*/
+require("dotenv").config(); /*DOTENV ENCRIPTA*/
 
 const DB_URL = process.env.DB_URL; /* ESTAMOS INVOCANDO LA URL DENTRO DE .ENV */
-
 
 const connect = async () => {
     try {
