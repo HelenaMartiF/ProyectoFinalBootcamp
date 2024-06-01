@@ -9,4 +9,47 @@ try{
 }
 };
 
-module.exports = {getPeliculas}
+const postPelicula = async (req, res)=>{
+/* console.log("funciona"); */
+try{
+/* console.log(req.body); */
+
+const newPelicula = new Pelicula (req.body);
+const createdPelicula = await newPelicula.save();
+
+return res.status(201).json(createdPelicula);
+}catch(error){
+  return res.status(500).json(error);
+}
+}
+
+const putPelicula = async (req, res)=>{
+/*   console.log(req.params); */
+try{
+  const {id} = req.params; /* la id que viene de req.params va con {} porque desestruccturamos el objeto */
+  const putPelicula = new Pelicula(req.body)/* que nos pase por la validación y tiene que pasar por el req.body */
+  putPelicula._id = id; /* convertimos el _id del postman a id */
+  const updatedPelicula = await Pelicula.findByIdAndUpdate(id, putPelicula)/*si cuadra la validacion esta pelicula dentro de la coleccion pelicula, busca el id y va a meter el put que es la validación  */
+   if(!updatedPelicula) {
+  return res.status(404).json({message: "el id de eta pelicula no existe"})
+}
+  return res.status(200).json(updatedPelicula)/* si funciona devuelve 200 */
+}catch(error){
+  return res.status(500).json(error)
+}
+}
+
+const deletePelicula = async (req, res)=>{
+try{
+  const {id} = req.params; /* cogemos el id de los parametros */
+  const deletedPelicula = await Pelicula.findByIdAndDelete(id); /* lo busca y lo elimina */
+  if(!deletedPelicula){
+    return res.status(404).json({message: "el id no existe"})
+  }
+  return res.status(200).json(deletedPelicula)
+}catch(error){
+  return res.status(500).json(error)
+}
+}
+
+module.exports = {getPeliculas, postPelicula, putPelicula, deletePelicula};

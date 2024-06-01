@@ -1,26 +1,63 @@
-const mongoose = require ("mongoose");
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
 const peliculaSchema = new Schema(
   {
-    titulo:{
-      type:String,require:true}, /*campo obligatorio*/
-    tipo:{
-      type:String, enum:["Infantiles", "Juveniles", "Adultos", "Familiares"], 
-      require:true}, 
-    genero:{
-      type:String, default:"Familiares", 
-      enum:["Acción", "Aventuras", "Ciencia Ficción", "Comedia", "Drama", "Fantasía", "Musical", "Suspense", "Terror"],
-      require:true}, /*para elegir una serie de categorias*/
-    portada:{
-      type:String, require:true},
-  },{
+    portada: {
+      type: String,
+      require: false,
+    },
+    titulo: {
+      type: String,
+      require: true,
+    } /*campo obligatorio*/,
+    genero: {
+      type: String,
+      enum: [
+        "Acción",
+        "Aventuras",
+        "Ciencia Ficción",
+        "Comedia",
+        "Drama",
+        "Fantasía",
+        "Musical",
+        "Suspense",
+        "Terror",
+      ],
+      require: true,
+    } /*para elegir una serie de categorias*/,
+    fecha: {
+      type: String,
+      require: true,
+    },
+    duracion: {
+      type: String,
+      require: true,
+    },
+    director: {
+      type: String,
+      require: true,
+    },
+    descripcion: {
+      type: String,
+      require: true,
+    },
+    tipo: {
+      type: String,
+      default: "Familiares",
+      enum: ["Infantiles", "Juveniles", "Adultos", "Familiares"],
+      require: true,
+    },
+  },
+  {
+    timestamps: true /*cuando tenemos una base de datos que se modifica, el timestamp te dice la fecha en la que actualiza y en la que crea*/,
+  }
+);
 
-    timestamps:true /*cuando tenemos una base de datos que se modifica, el timestamp te dice la fecha en la que actualiza y en la que crea*/
-  });
+const Pelicula = mongoose.model(
+  "pelicula",
+  peliculaSchema
+); /*almacenamos en una constante , que utiliza el modelo peliculaSchema*/
 
-const Pelicula = mongoose.model("pelicula", peliculaSchema) /*almacenamos en una constante , que utiliza el modelo peliculaSchema*/
-
-
-module.exports = Pelicula /*lo exportamos porque aqui no lo vamos a utilizar, a este modelo lo llamamos en peliculas.controllers*/
+module.exports = Pelicula; /*lo exportamos porque aqui no lo vamos a utilizar, a este modelo lo llamamos en peliculas.controllers*/
