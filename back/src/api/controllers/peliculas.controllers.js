@@ -1,5 +1,5 @@
 const Pelicula = require("../models/pelicula.model"); /* importamos el libro modelo */
-
+const {deleteFile} = require("../../middlewares/delete.file")
 const getPeliculas = async (req,res) => {/* atacamos a la colección de peliculas */
 try{
   const allPeliculas = await Pelicula.find()/* el find lo trae todo */
@@ -15,8 +15,12 @@ try{
 /* console.log(req.body); */
 
 const newPelicula = new Pelicula (req.body);
-const createdPelicula = await newPelicula.save();
+/* console.log(req.file); */
 
+if(req.file){
+  newPelicula.portada = req.file.path;
+}
+const createdPelicula = await newPelicula.save();
 return res.status(201).json(createdPelicula);
 }catch(error){
   return res.status(500).json(error);
@@ -45,6 +49,9 @@ try{
   const deletedPelicula = await Pelicula.findByIdAndDelete(id); /* lo busca y lo elimina */
   if(!deletedPelicula){
     return res.status(404).json({message: "el id no existe"})
+  }
+  if(deletedPelicula.portada.includes("cloudinary")){
+    deleteFile(deletedPelicula.portada)
   }
   return res.status(200).json(deletedPelicula)
 }catch(error){

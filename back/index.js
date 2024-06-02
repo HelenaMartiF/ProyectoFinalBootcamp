@@ -4,12 +4,18 @@ const express = require("express")  /* EXPRESS maneja el servidor a nivel LOCAL*
 const {connect} = require("./src/utils/db") /* importamos la función connect de utils/db */
 const dotenv = require("dotenv");
 dotenv.config()
-
+const cloudinary = require("cloudinary").v2;
 
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
 const listasRouter = require("./src/api/routes/lista.routes");
 
 const PORT = process.env.PORT; 
+
+cloudinary.config({ /* lo importamos antes de que se inicie el servidor local */
+cloud_name: process.env.CLOUDINARY_NAME, /* lo enlazamos con el back para saber donde tiene que subir */
+api_key: process.env.CLOUDINARY_KEY,
+api_secret: process.env.CLOUDINARY_SECRET, 
+});
 
 const app = express(); /* cada vez que invocamos express lo hacemos a través de app */
 
