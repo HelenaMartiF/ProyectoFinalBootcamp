@@ -7,7 +7,7 @@ dotenv.config()
 
 
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
-const cinesRouter = require("./src/api/routes/cines.routes")
+const listasRouter = require("./src/api/routes/lista.routes");
 
 const PORT = process.env.PORT; 
 
@@ -19,7 +19,7 @@ app.use(express.json())/* le decimos que sepa leer peticiones de tipo post */
 
 /*ponemos 1ª el endpoint de peliculas porque es el primero que lee e interpreta*/
 app.use("/peliculas" ,peliculasRouter)
-app.use("/cines" ,cinesRouter)
+app.use("/listas" ,listasRouter)
 
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
 app.use("/", (req,res)=>{ /* en home muestra : */

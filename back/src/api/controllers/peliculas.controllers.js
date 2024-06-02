@@ -52,4 +52,4 @@ try{
 }
 }
 
-module.exports = {getPeliculas, postPelicula, putPelicula, deletePelicula};
+module.exports = {getPeliculas, postPelicula,putPelicula, deletePelicula};
