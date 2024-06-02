@@ -9,7 +9,12 @@ const PORT = process.env.PORT;
 
 
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
+
 const userRoutes = require('./src/api/routes/user.routes');
+
+const cinesRouter = require("./src/api/routes/cines.routes")
+
+
 
 
 const app = express(); /* cada vez que invocamos express lo hacemos a través de app */
@@ -39,6 +44,7 @@ app.use(express.json())/* le decimos que sepa leer peticiones de tipo post */
 /*ponemos 1ª el endpoint de peliculas porque es el primero que lee e interpreta*/
 app.use("/peliculas" ,peliculasRouter)
 app.use("/user", userRoutes);
+
 
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
 app.use("/", (req,res)=>{ /* en home muestra : */
