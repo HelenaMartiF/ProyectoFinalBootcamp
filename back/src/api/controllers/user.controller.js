@@ -58,23 +58,8 @@ const logIn = async (req, res) => { /* logIn como user */
 }*/
 
 
-/* const getUsers = async (req, res, next) => {
-    try {
-        const users = await User.find();
-        res.status(200).json({
-            status: 200,
-            message: HTTPSTATUSCODE[200],
-            data: users
-        });
-
-    } catch (error) {
-        return res.status(500).json(error)
-    }
-} 
- */
 module.exports = {
     registerUser,
     logIn,
     /*logout,*/
-    /* getUsers */ 
 }
