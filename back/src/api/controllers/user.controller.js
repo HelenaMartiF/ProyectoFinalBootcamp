@@ -45,21 +45,14 @@ const logIn = async (req, res) => { /* logIn como user */
     }
 }
 
-/*const logout = (request, response, next) => {
-    try {
-        return res.json({
-            status: 200,
-            message: HTTPSTATUSCODE[200],
-            token: null
-        });
-    } catch (error) {
-        return next(error)
-    }
-}*/
+const logOut = (req, res) => { /* logOut de user con token */
+    res.clearCookie('jwt'); /*  */
+    return res.status(200).json({ status: 'success' });
+  };
 
 
 module.exports = {
     registerUser,
     logIn,
-    /*logout,*/
+    logOut
 }
