@@ -3,7 +3,7 @@ const {getPeliculas, postPelicula, putPelicula, deletePelicula} = require("../co
 
 const peliculasRouter = express.Router();
 
-peliculasRouter.get("/",getPeliculas)
+peliculasRouter.get("/", getPeliculas)
 peliculasRouter.post("/", postPelicula) /* vamos a crear la primera pelicula */
 peliculasRouter.put("/:id", putPelicula)
 peliculasRouter.delete("/:id", deletePelicula)
