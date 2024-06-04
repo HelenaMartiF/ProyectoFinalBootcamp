@@ -25,6 +25,7 @@ const Register = () => {
       <input
         type="username"
         id="username"
+        placeholder="Introduzca su nombre de usuario"
         {...register("username", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
       <label htmlFor="name">Name:</label>{" "}
@@ -32,6 +33,7 @@ const Register = () => {
       <input
         type="name"
         id="name"
+        placeholder="Introduzca su nombre"
         {...register("name", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
       <label htmlFor="lastname">Last Name:</label>
@@ -39,6 +41,7 @@ const Register = () => {
       <input
         type="lastname"
         id="lastname"
+        placeholder="Introduzca sus apellidos"
         {...register("lastname", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
       <label htmlFor="email">Email:</label>
@@ -46,6 +49,7 @@ const Register = () => {
       <input
         type="email"
         id="email"
+        placeholder="Introduzca su email"
         {...register("email", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
       <label htmlFor="password">Password:</label>
@@ -53,6 +57,7 @@ const Register = () => {
       <input
         type="password"
         id="password"
+        placeholder="Introduzca su contraseña"
         {...register("password", { required: true })} //con este formuladio ya está recogido
       />
       <button type="submit"> Register</button>

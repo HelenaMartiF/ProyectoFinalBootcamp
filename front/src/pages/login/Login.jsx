@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { JwtContext } from "../../context/jwtContext";
 
+
 const Login = () => {
   // Estas dos funcionalidades vienen por defecto en el useForm
   const { register, handleSubmit } = useForm();
@@ -17,7 +18,7 @@ const Login = () => {
      localStorage.setItem("token", res.data.token) //.aqui cuando nos logueamos nos devuelve el token y lo mandamos al localstorage (aqui es donde se guarda el token)
      localStorage.setItem("email", res.data.user.email)//el setitem te añade uno
      setJwt(localStorage.getItem("token"))
-      navigate("/gallery")
+      navigate("/gallery") // UNA VEZ LOGGEADO TE MANDA A GALLERY
     })
   };
 return (
@@ -26,16 +27,18 @@ return (
   <input
     type="email"
     id="email"
+    placeholder="Introduzca su email"
     {...register("email", { required: true })}
   />
   <label htmlFor="password">Password:</label>
   <input
     type="password"
     id="password"
+    placeholder="Introduzca su contraseña"
     {...register("password", { required: true })}
   />
   <button type="submit"> Login</button>
-  <button type="submit"> Logout</button>
+  
 </form>
 )
 }

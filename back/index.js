@@ -46,6 +46,7 @@ app.use("/listas" ,listasRouter)
 app.use("/users", userRoutes);
 
 
+
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
 app.use("/", (req,res)=>{ /* en home muestra : */
     res.send("servidor en marcha")
