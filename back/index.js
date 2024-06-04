@@ -8,7 +8,7 @@ const cloudinary = require("cloudinary").v2;
 
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
 const listasRouter = require("./src/api/routes/lista.routes");
-const userRoutes = require('./src/api/routes/user.routes');
+const userRoutes = require('./src/api/routes/users.routes');
 const PORT = process.env.PORT; 
 
 cloudinary.config({ /* lo importamos antes de que se inicie el servidor local */
@@ -43,12 +43,13 @@ app.use(express.json())/* le decimos que sepa leer peticiones de tipo post */
 /*ponemos 1ª el endpoint de peliculas porque es el primero que lee e interpreta*/
 app.use("/peliculas" ,peliculasRouter)
 app.use("/listas" ,listasRouter)
-app.use("/user", userRoutes);
+app.use("/users", userRoutes);
 
 
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
 app.use("/", (req,res)=>{ /* en home muestra : */
-    res.json("esto es el home")
+    res.send("servidor en marcha")
+    //res.json("esto es el home")
 });
 
 

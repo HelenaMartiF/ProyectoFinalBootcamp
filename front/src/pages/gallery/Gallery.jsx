@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
+import { useEffect, useState } from 'react'
 import { API } from '../../services/api'
 
 const Gallery = () => {
@@ -17,8 +16,8 @@ const Gallery = () => {
   return (
     <div>
       <ul>
-        {peliculas.map((pelicula)=>(
-          <li>{pelicula.titulo}</li>
+        {peliculas.map((pelicula,index)=>(
+          <li key={index}>{pelicula.titulo}</li>
         ))}
       </ul>
     </div>

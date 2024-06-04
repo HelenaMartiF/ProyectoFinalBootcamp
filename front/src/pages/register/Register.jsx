@@ -3,7 +3,6 @@ import { API } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 const Register = () => {
   //1. creamos el formulario de register
-
   // Estas dos funcionalidades vienen por defecto en el useForm
   const { register, handleSubmit } = useForm(); //3.los formularios reactivos traen dos variables y viene de useform
   const navigate = useNavigate(); //estas dos variables vienen por defecto
@@ -35,21 +34,21 @@ const Register = () => {
         id="name"
         {...register("name", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
-      <label htmlFor="lastname">Last Name:</label>{" "}
+      <label htmlFor="lastname">Last Name:</label>
       {/* este label se vincula con el htmlfor */}
       <input
         type="lastname"
         id="lastname"
         {...register("lastname", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
-      <label htmlFor="email">Email:</label>{" "}
+      <label htmlFor="email">Email:</label>
       {/* este label se vincula con el htmlfor */}
       <input
         type="email"
         id="email"
         {...register("email", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
-      <label htmlFor="password">Password:</label>{" "}
+      <label htmlFor="password">Password:</label>
       {/* esto son los dos valores requeridos que le hemos puesto en el back un email y un password */}
       <input
         type="password"

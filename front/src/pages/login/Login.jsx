@@ -1,20 +1,22 @@
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { JwtContext } from "../../context/jwtContext";
 
 const Login = () => {
   // Estas dos funcionalidades vienen por defecto en el useForm
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const {setJwt} = useContext(JwtContext);
 
    const onSubmit = (formData) => {
      console.log(formData);
      API.post("users/login",formData).then((res)=>{ //1.mandamos al login los campos de formdata
-      //  console.log(res);
-      localStorage.setItem("token", res.data.token) //.aqui cuando nos logueamos nos devuelve el token y lo mandamos al localstorage (aqui es donde se guarda el token)
-      localStorage.setItem("email", res.data.user.email)//el setitem te añade uno
-     /*  setJwt(localStorage.getItem("token")) */
+      //console.log(res);
+     localStorage.setItem("token", res.data.token) //.aqui cuando nos logueamos nos devuelve el token y lo mandamos al localstorage (aqui es donde se guarda el token)
+     localStorage.setItem("email", res.data.user.email)//el setitem te añade uno
+     setJwt(localStorage.getItem("token"))
       navigate("/gallery")
     })
   };
@@ -33,6 +35,7 @@ return (
     {...register("password", { required: true })}
   />
   <button type="submit"> Login</button>
+  <button type="submit"> Logout</button>
 </form>
 )
 }
