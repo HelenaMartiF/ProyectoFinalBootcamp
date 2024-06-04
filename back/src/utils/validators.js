@@ -1,6 +1,6 @@
 /* VALIDADORES DE USER */
 /* regexr.com --> pagina para conseguir los validadores */
-const User = require("../api/models/user.model")
+const User = require("../api/models/users.model")
 
 
 const validateEmail = (email) => {

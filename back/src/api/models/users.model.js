@@ -6,12 +6,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     trim: true,
-    required: true,
+    required: true, 
   },
   name: {
     type: String,
     trim: true,
-    required: true,
+   required: true, 
   },
   lastname: {
     type: String,
@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
   role: {
     type: String,
     default: "user",
-    enum: ["admin", "user", "moderator"]
+    enum: ["admin", "user"]
   }
 });
 

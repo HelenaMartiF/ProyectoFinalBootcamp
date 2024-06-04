@@ -1,10 +1,10 @@
-const User = require("../../api/models/user.model")
-const {verifySign} = require("../../utils/jwt") /* nos traemos la función de verificación de token a partir de la llave */
+const User = require("../api/models/users.model")
+const {verifySign} = require("../utils/jwt") /* nos traemos la función de verificación de token a partir de la llave */
 
-const isAuth = async(req, res, next) => { /* esta función verifica el TOKEN del usuario, si el TOKEN que recibimos no se verifica con nuestra JWK_KEY no tiene acesso a lo que tenga 'isAuth' por ejemplo: userRoutes.get('/consulta', isAuth, consultaUsers), si el token que envía el usuario al hacer login no es correcto, no podrá hacer un get de user porque no podrá iniciar sesión. Por eso lo teníamos en logOut porque si el token no es correcto no puedes terminar el login así que no puedes hacer logout*/
+const isAuth = async(req,res,next) => { /* esta función verifica el TOKEN del usuario, si el TOKEN que recibimos no se verifica con nuestra JWK_KEY no tiene acesso a lo que tenga 'isAuth' por ejemplo: userRoutes.get('/consulta', isAuth, consultaUsers), si el token que envía el usuario al hacer login no es correcto, no podrá hacer un get de user porque no podrá iniciar sesión. Por eso lo teníamos en logOut porque si el token no es correcto no puedes terminar el login así que no puedes hacer logout*/
 
     try {
-        const authorization = (req.headers.authorization);
+        const authorization = req.headers.authorization;
         if(!authorization){ /* si no hay autorización ... mensaje error */ 
             return res.status(401).json({message:"No estás autorizado."})
         }
