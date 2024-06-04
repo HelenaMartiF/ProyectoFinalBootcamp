@@ -44,9 +44,21 @@ const login = async (req, res) => {//6.generamos un token para el login generamo
     }
   };
 
-const logout = (req, res) => { /* logOut de user con token */
-    res.clearCookie('jwt'); /*  */
+/* const logout = (req, res) => { */ /* logOut de user con token */
+  /*   res.clearCookie('jwt');
     return res.status(200).json({ status: 'success' });
+  }; */
+
+  const logout = (req, res, next) => { // logOut de user
+    try {
+      const token = null;    // eliminamos token
+      return res.status(200).json({  // all okay
+        status: 200,
+        message: "Logout successful",
+      });
+    } catch (error) {      // no se ha eliminado el token --> error
+      return next(setError(error.statusCode, "Logout Error"));
+    }
   };
 
 const checkSession = (req, res) => {
