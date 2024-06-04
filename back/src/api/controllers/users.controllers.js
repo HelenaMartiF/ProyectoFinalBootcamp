@@ -30,6 +30,7 @@ const register = async (req, res) => { /* Crear usuario */
 const login = async (req, res) => {//6.generamos un token para el login generamos la funcion asincrona y lo importamos en users.routes
     try {
       const userInfo = await User.findOne({ email: req.body.email });//comprobamos si existe lo que le estamos pasando, dentro de mi coleccion busca uno que como campo principal sea el body el email
+      //console.log(userInfo);
       if (!userInfo) {//si no existe nos devuelve el error
         return res.status(404).json({ message: "email no existe" });
       }
@@ -38,6 +39,7 @@ const login = async (req, res) => {//6.generamos un token para el login generamo
       }
       //7.en la carpeta util creamos jwt para crear el token
       const token = generateSign(userInfo._id, userInfo.email);//8.vamos a generar el token que recibe un id y un email
+      //console.log(token);
       return res.status(200).json({ user: userInfo, token: token });
     } catch (error) {
       return res.status(500).json(error)
