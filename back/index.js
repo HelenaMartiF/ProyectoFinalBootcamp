@@ -9,6 +9,7 @@ const cloudinary = require("cloudinary").v2;
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
 const listasRouter = require("./src/api/routes/lista.routes");
 const userRoutes = require('./src/api/routes/users.routes');
+const favoritosRoutes = require('./src/api/routes/favoritos.routes');
 const PORT = process.env.PORT; 
 
 cloudinary.config({ /* lo importamos antes de que se inicie el servidor local */
@@ -44,6 +45,7 @@ app.use(express.json())/* le decimos que sepa leer peticiones de tipo post */
 app.use("/peliculas" ,peliculasRouter)
 app.use("/listas" ,listasRouter)
 app.use("/users", userRoutes);
+app.use("/favoritos", favoritosRoutes);
 
 
 

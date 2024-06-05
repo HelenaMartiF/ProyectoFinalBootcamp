@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const listaSchema = new mongoose.Schema(
   {
-    idUsuario: { type: String, required: true, unique: true },
-    arrayIdPeliculas: { type: Array },
+    genero: { type: String, required: true, unique: true },
+    arrayIdPeliculas: [{ type: Schema.ObjectId, ref: "pelicula"}],
   },
   { timestamps: true }
 );
