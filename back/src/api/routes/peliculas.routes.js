@@ -6,7 +6,8 @@ const {isAuth} = require("../../middlewares/auth") /* importamos la autorizació
 const peliculasRouter = express.Router();
 
 peliculasRouter.get("/", getPeliculas)
-peliculasRouter.post("/",upload.fields([{name:"portada"}]), postPelicula) /* vamos a crear la primera pelicula */
+peliculasRouter.post("/",upload.single("portada"), postPelicula)
+//peliculasRouter.post("/",upload.fields([{name:"portada"}]), postPelicula) /* vamos a crear la primera pelicula */
 peliculasRouter.put("/:id",isAuth, putPelicula)
 peliculasRouter.delete("/:id",isAuth, deletePelicula)
 
