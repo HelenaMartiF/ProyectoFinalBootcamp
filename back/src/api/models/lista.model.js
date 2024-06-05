@@ -1,15 +1,12 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-const listaSchema = new mongoose.Schema(
+const ListaSchema = new mongoose.Schema(
   {
-    idUsuario: { type: String, required: true, unique: true },
-    arrayIdPeliculas: { type: Array },
+    titulo: { type:String, required:true, unique: true},
+    genero: { type:String },
+    contenido: { type: Array } /* el array va a contener el ID de las películas que se muestren en la lista */
   },
   { timestamps: true }
 );
 
-const Lista = mongoose.model("lista", listaSchema)
-
-module.exports = Lista;
+module.export = mongoose.model("Lista", ListaSchema)
