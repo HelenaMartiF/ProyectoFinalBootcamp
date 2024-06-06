@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+/* const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
 const favoritoSchema = new mongoose.Schema(
   {
-    idUsuario: { type: String, required: true, unique: true },
+    idUsuario: { type: String, required: true},
     arrayIdPeliculas: { type: Array },
   },
   { timestamps: true }
@@ -12,4 +12,4 @@ const favoritoSchema = new mongoose.Schema(
 
 const Favorito = mongoose.model("favorito", favoritoSchema)
 
-module.exports = Favorito;
+module.exports = Favorito; */
