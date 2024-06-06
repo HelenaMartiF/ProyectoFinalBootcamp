@@ -6,8 +6,8 @@ const {isAuth} = require("../../middlewares/auth") /* importamos la autorizació
 
 userRoutes.post('/register', register); /* registrar usuario */
 userRoutes.post('/login', login); // acceder como usuario
-userRoutes.post('/logout', isAuth, logout);
-userRoutes.get('/checksession', isAuth, checkSession);
+userRoutes.post('/logout', [isAuth], logout);
+userRoutes.get('/checksession', [isAuth], checkSession);
 
 
 module.exports = userRoutes;
