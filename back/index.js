@@ -6,6 +6,8 @@ const cors = require("cors");
 dotenv.config()
 const cloudinary = require("cloudinary").v2;
 
+/* const stripe = ("stripe")("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") */
+
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
 const listasRouter = require("./src/api/routes/lista.routes");
 const userRoutes = require('./src/api/routes/users.routes');
@@ -49,6 +51,7 @@ app.use("/favoritos", favoritosRoutes);
 
 
 
+
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
 app.use("/", (req,res)=>{ /* en home muestra : */
     res.send("servidor en marcha")
@@ -56,6 +59,26 @@ app.use("/", (req,res)=>{ /* en home muestra : */
 });
 
 
+/* creamos el checkout para generar los pagos */
 /*  DEFINIR EL PUERTO E INICIAR LA ESCUCHA */
 app.listen(PORT, ()=> console.log(`Escuchando en el puerto http://localhost:${PORT}`))
 
+/* const calculateOrderAmount = (items)=>{// esta funcion calcula lo que cobramos al que nos compre y se encarga de sumar los productos 
+    return 1400; //esto serían 14 eu 
+}
+
+app.post("/create-payment-intent", async (req, res)=>{// con este metodo es al que nos lleva el formulario de pago que es el que se va a encargar de cobrar y seguir nuestro pago
+    const {items} = req.body;
+
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: calculateOrderAmount(items),
+        currency: "eur",
+        automatic_payment_methods:{enabled: true,
+        },
+    })
+});
+
+res.send({
+    clientSecret: paymentIntent.client_secret,
+}); 
+*/
