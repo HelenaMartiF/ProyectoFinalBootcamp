@@ -1,5 +1,7 @@
 const Pelicula = require("../models/pelicula.model"); /* importamos el libro modelo */
 const { deleteFile } = require("../../middlewares/delete.file");
+
+
 const getPeliculas = async (req, res) => {
   /* atacamos a la colección de peliculas */
   try {

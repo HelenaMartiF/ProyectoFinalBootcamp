@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
-const ListaSchema = new mongoose.Schema(
+const listaSchema = new mongoose.Schema(
   {
-    titulo: { type:String, required:true, unique: true},
-    genero: { type:String },
-    contenido: { type: Array } /* el array va a contener el ID de las películas que se muestren en la lista */
+    genero: { type: String, required: true, unique: true },
+    arrayIdPeliculas: [{ type: mongoose.Schema.Types.ObjectId, ref: "pelicula"}],  /* Hemos puesto mongoose.schema para que ObjectID esté bien relacionado con la ddbb */
   },
   { timestamps: true }
 );
 
-module.export = mongoose.model("Lista", ListaSchema)
+const Lista = mongoose.model("lista", listaSchema)
+
+module.exports = Lista

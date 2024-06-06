@@ -1,39 +1,35 @@
 import { useEffect, useState } from 'react'
 import { API } from '../../services/api'
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { JwtContext } from "../../context/jwtContext";
+/* import { useNavigate } from "react-router-dom"; */
+/* import { useContext } from "react";
+import { JwtContext } from "../../context/jwtContext"; */
 
 
 const Gallery = () => {
   const [peliculas, setPeliculas] = useState([]);
-  const {setJwt} = useContext(JwtContext);
+  /* const [listas, setListas] = useState([]); /* listas */ 
+  
 
+  /* Tenemos que substituir get peliculas por get listas???  */
+  /* Sino nos va a coger todas las pelis y luego todas las listas */
   useEffect(() => {
     API.get("peliculas").then((res) => {
       setPeliculas(res.data);
+      /* API.get("listas").then((res) =>{
+        setListas(res.data); */
+      
     });
   }, []);
 
-const navigate = useNavigate();
-
-const handleLogout = () => {
-  
-  
-  localStorage.removeItem("token") // NO ESTÁ BORRANDO EL MAIL
-  localStorage.removeItem("key") // AQUÍ TAMPOCO LO BORRA
-  localStorage.removeItem("value")
-  localStorage.removeItem("email")//borra el email del local
-  setJwt(null)
-  navigate("/")
-}
 
 
   return (
     <div>
-    <button type="submit" onClick={handleLogout}> Logout</button> {/* BOTON DE LOGGOUT, inicias en home = inicio, loggin --> Gallery = logout --> inicio */}
+   
+    Galería contiene las LISTAS de películas ordenadas por género
       <ul>
-        {peliculas.map((pelicula,index)=>(
+      {/* Mapeamos peliculas y las pintamos en Galeria */}
+        {peliculas.map((pelicula,index)=>( 
           <li key={index}>
           <h1>{pelicula.titulo}</h1>
           <img src={pelicula.portada}/>
@@ -41,10 +37,13 @@ const handleLogout = () => {
           <h4>{pelicula.fecha}</h4>
           <h4>{pelicula.duracion}</h4>
           <h4>{pelicula.tipo}</h4>
-          <p>{pelicula.descripcion}</p>
-          
+          <p>{pelicula.descripcion}</p> 
           </li>
-        ))}
+        ))} 
+        {/* {listas.map((lista, index)=> (
+          <lista key ={index}/>
+        ))} */}
+
       </ul>
       
     </div>

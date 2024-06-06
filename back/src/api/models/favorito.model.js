@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
 
-const listaSchema = new mongoose.Schema(
+const favoritoSchema = new mongoose.Schema(
   {
     idUsuario: { type: String, required: true, unique: true },
     arrayIdPeliculas: { type: Array },
@@ -9,6 +10,6 @@ const listaSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Lista = mongoose.model("lista", listaSchema)
+const Favorito = mongoose.model("favorito", favoritoSchema)
 
-module.exports = Lista;
+module.exports = Favorito;

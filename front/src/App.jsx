@@ -8,6 +8,8 @@ import Navigator from "./core/navigator/Navigator";
 import { useState } from "react";
 import { JwtContext } from "./context/jwtContext";
 import { RequireAuth } from "./components/RequireAuth";
+import FavPage from "./layout/FavPage";
+import MoviesPage from "./layout/MoviesPage";
 
 function App() {
   const [jwt, setJwt] = useState(null); //estas son las variables de contexto
@@ -16,10 +18,10 @@ function App() {
   return (
     <JwtContext.Provider value={{ jwt, setJwt }}>
       <Router>
-        <Navigator />{" "}
+        <Navigator />
         {/* el navegador va siempre dentro del router, para que nos lleve a los links */}
         <Routes>
-          <Route path="/" element={<Home />} />{" "}
+          <Route path="/" element={<Home />} />
           <Route
             path="/gallery"
             element={
@@ -30,6 +32,8 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/favoritos" element={<FavPage/>}/>
+          <Route path="/peliculas" element={<MoviesPage/>} />
         </Routes>
       </Router>
     </JwtContext.Provider>
