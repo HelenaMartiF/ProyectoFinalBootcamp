@@ -7,7 +7,6 @@ dotenv.config()
 const cloudinary = require("cloudinary").v2;
 
 
-
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
 const listasRouter = require("./src/api/routes/lista.routes");
 const userRoutes = require('./src/api/routes/users.routes');
