@@ -8,13 +8,13 @@
       ),
       url("https://www.pcworld.com/wp-content/uploads/2024/05/Netflix-Hintergrund-1.jpg?resize=1536%2C864&quality=50&strip=all");
     background-size: cover;
-    position: relative;
+    /* position: relative; */
     color: white
   
 }
 
 .top {
-      
+  z-index: 100;
       
   .logo_container {
     padding: 20px 50px;

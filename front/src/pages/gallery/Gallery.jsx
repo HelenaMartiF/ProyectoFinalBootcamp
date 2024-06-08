@@ -3,6 +3,7 @@ import { API } from '../../services/api'
 /* import { useNavigate } from "react-router-dom"; */
 /* import { useContext } from "react";
 import { JwtContext } from "../../context/jwtContext"; */
+import Navigator from '../../core/navigator/Navigator';
 
 
 const Gallery = () => {
@@ -27,6 +28,7 @@ const Gallery = () => {
     <div>
    
     Galería contiene las LISTAS de películas ordenadas por género
+    <Navigator/>
       <ul>
       {/* Mapeamos peliculas y las pintamos en Galeria */}
         {peliculas.map((pelicula,index)=>( 
