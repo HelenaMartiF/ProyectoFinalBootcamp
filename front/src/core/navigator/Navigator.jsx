@@ -33,26 +33,26 @@ const Navigator = () => {
         <header>
           {/* LOGO */}
           <div className="ullFlix_logo">
-            <Link to="/gallery">
+            
               <img src="/logo.png" alt=""></img>
-            </Link>
+            
           </div>
 
           <nav className="header-nav">
             <ul>
               <li>
                 <Link to="/gallery">
-                  <button>Gallery</button>
+                  Gallery
                 </Link>
               </li>
               <li>
                 <Link to="/favoritos">
-                  <button>Favoritos</button>
+                  Favoritos
                 </Link>
               </li>
               <li>
                 <Link to="/peliculas">
-                  <button>Peliculas</button>
+                  Peliculas
                 </Link>
               </li>
               <li>

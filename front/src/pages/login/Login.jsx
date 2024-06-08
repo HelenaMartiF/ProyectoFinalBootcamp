@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
 import { JwtContext } from "../../context/jwtContext";
 import "./Login.scss";
+
 
 const Login = () => {
   // Estas dos funcionalidades vienen por defecto en el useForm
@@ -23,18 +24,21 @@ const Login = () => {
     });
   };
 
-  const handleHome = () => {
+/*   const handleHome = () => {
+    console.log('funciona')
     navigate("/");
   };
-
+ */
 
   return (
     <div className="login">
 
       {/* LOGO */}
       <div className="top" >
-        <div className="logo_container" onClick={handleHome}>
-          <img className="logo" src="/logo.png" alt=""></img>
+        <div className="logo_container" >
+        <Link to='/'>
+          <img className="logo" src="/logo.png" alt="" />
+          </Link>
         </div>
       </div>
 
