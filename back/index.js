@@ -52,10 +52,10 @@ app.use("/favoritos", favoritosRoutes);
 
 
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
-app.use("/", (req,res)=>{ /* en home muestra : */
+/* app.use("/", (req,res)=>{ en home muestra :
     res.send("servidor en marcha")
     //res.json("esto es el home")
-});
+}); */
 
 
 /* creamos el checkout para generar los pagos */
