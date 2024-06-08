@@ -1,22 +1,41 @@
-
+import "./Home.scss";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleHome = () => {
+    navigate("/");
+  };
+  const handleRegister = () => {
+    navigate("/register");
+  };
+
   return (
-    <div>
-    <p>ESTO ES HOME LO QUE PARA NOSOTRAS ES INICIO
-    Esto es la página de netflix.com ANTES de iniciar sesión.</p>
-    <p>¿Que debe contener esto? Netflix oficial contiene:</p>
-    <ul>
-      <li>Contiene el HEADER con el botón de IDIOMA y INICIAR SESIÓN</li>
-      <li>
-        Un diff grande que va a ser un COMPONENTE donde puedes poner tu email y CREAR UNA SUBSCRIPCIÓN o REACTIVAR tu antigua subscripción
-      </li>
-    </ul>
-
-   
+    <div className="main_container">
+      <div className="top" onClick={handleHome}>
+        <div className="logo_container">
+          <img className="logo" src="/logo.png" alt=""></img>
+        </div>
+        <button onClick={handleLogin}>Iniciar sesión</button>
+      </div>
+      <div className="middle">
+        <h3>Películas sin límites y mucho más.</h3>
+        <h6>Disfruta donde quieras, Cancela cuando quieras.</h6>
+        <p>
+          ¿Quieres ver algo ya? Escribe tu dirección de correo para registrarte
+          en Ullflix.
+        </p>
+        <div className="register_form">
+          <input placeholder="Dirección de correo"></input>
+          <button onClick={handleRegister}>Empezar</button>
+        </div>
+      </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
