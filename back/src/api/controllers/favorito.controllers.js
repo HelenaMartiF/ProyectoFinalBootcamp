@@ -29,28 +29,31 @@ const postFavorito = async (req, res)=>{
   const putFavorito = async (req, res) => {
     /*   console.log(req.params); */
     try {
-      console.log(req.user)
-      const { id } = req.user._id; /* la id que viene de req.params va con {} porque desestruccturamos el objeto */
 
-      const existingFavorito = await Favorito.findOne({ user: id }); /* busca si ya hay alguna lista de Fav creada con este user ID */
-      if (!existingFavorito) { /* si no hay un Favorito -> crea uno */
+      const id = req.user._id; 
+
+      const existingFavorito = await Favorito.findOne({ idUsuario: id }); /* busca si ya hay alguna lista de Fav creada con este user ID */
+
+      if (!existingFavorito) { /* si no hay una lista Favorito -> crea una */
         const newFavorito = new Favorito({
-          user: id,
+          idUsuario: id,
           arrayIdPeliculas: req.body.arrayIdPeliculas
         });
         const createdFavorito = await newFavorito.save();
         return res.status(201).json(createdFavorito);
         
-      }else{ /* si ya existe un Favorito -> actualizalo */
-        const updatedFavorito = await Favorito.findByIdAndUpdate(
-          id,
+      }else{ /* si ya existe una lista Favorito -> actualizala */
+        const updatedFavorito = await Favorito.findOneAndUpdate( /* no tenemos la id del documento sino la del user */
+          {idUsuario: id},
           {$push:{arrayIdPeliculas:req.body.arrayIdPeliculas}}, /* hacemos el push de la pelicula en la lista de favoritos */
           {new:true}
         ); /*si cuadra la validacion esta pelicula dentro de la coleccion pelicula, busca el id y va a meter el put que es la validación  */
+        console.log(req.body.arrayIdPeliculas);
+        console.log(updatedFavorito)
         if (!updatedFavorito) {
           return res
             .status(404)
-            .json({ message: "el id de eta pelicula no existe" });
+            .json({ message: "el id de esa pelicula no existe" });
         }
         return res.status(200).json(updatedFavorito); /* si funciona devuelve 200 */
       } 
