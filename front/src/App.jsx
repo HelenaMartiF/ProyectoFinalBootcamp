@@ -1,5 +1,4 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
 import Home from "./pages/home/Home";
 import Gallery from "./pages/gallery/Gallery";
 import Login from "./pages/login/Login";
@@ -10,6 +9,8 @@ import { JwtContext } from "./context/jwtContext";
 import { RequireAuth } from "./components/RequireAuth";
 import FavPage from "./layout/FavPage";
 import MoviesPage from "./layout/MoviesPage";
+import './App.scss'
+
 
 function App() {
   const [jwt, setJwt] = useState(null); //estas son las variables de contexto
