@@ -10,6 +10,8 @@ import { JwtContext } from "./context/jwtContext";
 import { RequireAuth } from "./components/RequireAuth";
 import FavPage from "./layout/FavPage";
 import MoviesPage from "./layout/MoviesPage";
+import './App.scss'
+
 
 function App() {
   const [jwt, setJwt] = useState(null); //estas son las variables de contexto

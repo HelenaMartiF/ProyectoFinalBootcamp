@@ -3,15 +3,13 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { JwtContext } from "../../context/jwtContext";
 import { useNavigate } from "react-router-dom";
+import "./Navigator.scss";
+import SearchIcon from '@mui/icons-material/Search';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Navigator = () => {
-  const { jwt } = useContext(JwtContext);
   const { setJwt } = useContext(JwtContext);
-
-  /* const showButtons = () =>{
-
-  } 
- */
 
   const navigate = useNavigate();
 
@@ -29,44 +27,26 @@ const Navigator = () => {
   }
   return (
     <>
-      {jwt && (
-        <header>
-          {/* LOGO */}
-          <div className="ullFlix_logo">
-            
-              <img src="/logo.png" alt=""></img>
-            
+      <div className="main_navBar">
+        <div className="container">
+
+          <div className="left_side">
+            <img className="logo" src="/logo.png" />
+
+            <Link className="link" to="/gallery">Inicio</Link>
+            <Link className="link" to="/favoritos">Favoritos</Link>
+            <Link className="link" to="/peliculas">Peliculas</Link>
           </div>
 
-          <nav className="header-nav">
-            <ul>
-              <li>
-                <Link to="/gallery">
-                  Galeria
-                </Link>
-              </li>
-              <li>
-                <Link to="/favoritos">
-                  Favoritos
-                </Link>
-              </li>
-              <li>
-                <Link to="/peliculas">
-                  Peliculas
-                </Link>
-              </li>
-              <li>
-                <button type="submit" onClick={handleLogout}>
-                  {" "}
-                  Logout
-                </button>{" "}
-                {/* BOTON DE LOGGOUT, inicias en home = inicio, loggin --> Gallery = logout --> inicio */}
-              </li>
-            </ul>
-          </nav>
-        </header>
-      )}
-      {/* cuando el user haga el LOGIN --> desaparece la opción de login/register/home */}
+
+          <div className="right_side">
+          <SearchIcon className="icons"/>
+          <NotificationsNoneIcon className="icons"/>
+          <LogoutIcon className="icons" onClick={handleLogout}/>
+            {/* BOTON DE LOGGOUT, inicias en home = inicio, loggin --> Gallery = logout --> inicio */}
+          </div>
+        </div>
+      </div>
     </>
   );
 };
