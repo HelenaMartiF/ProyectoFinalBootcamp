@@ -42,7 +42,7 @@ const Navigator = () => {
             <ul>
               <li>
                 <Link to="/gallery">
-                  Gallery
+                  Galeria
                 </Link>
               </li>
               <li>

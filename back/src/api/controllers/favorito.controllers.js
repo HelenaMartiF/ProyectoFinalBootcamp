@@ -60,36 +60,27 @@ const postFavorito = async (req, res)=>{
       }catch (error) {
         return res.status(500).json(error);
   }};
-  
-/*   const deleteFavorito = async (req, res) => {
-    try {
-      const { id } = req.params; */ /* cogemos el id de los parametros */
-      /* const deletedFavorito = await Favorito.findByIdAndDelete(
-        id
-      ); */ /* lo busca y lo elimina */
-      /* if (!deletedFavorito) {
-        return res.status(404).json({ message: "el id no existe" });
-      }
-      if (deletedFavorito.portada.includes("cloudinary")) {
-        deleteFile(deletedFavorito.portada);
-      }
-      return res.status(200).json(deletedFavorito);
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }; */
 
   const deleteFavorito = async (req, res) => {
     try {
       const userId = req.user._id; // Obtener el ID del usuario desde el token de autenticación
-      console.log(req.user._id)
-      const { peliculaId } = req.params; // Obtener el ID de la película de los parámetros
+/*       console.log('User ID:', userId); */
+  
+      const peliculaId = req.body.arrayIdPeliculas; // Obtener el ID de la película de los parámetros
+/*       console.log('Película ID:', peliculaId); */
+  
+      // Verificar que peliculaId esté presente
+      if (!peliculaId) {
+        return res.status(400).json({ message: "El ID de la película es requerido" });
+      }
   
       // Buscar el documento Favorito del usuario
-      const favorito = await Favorito.findOne({ user: userId });
+      const favorito = await Favorito.findOne({ idUsuario: userId });
       if (!favorito) {
         return res.status(404).json({ message: "Favorito no encontrado para el usuario" });
       }
+  
+      console.log('Favorito encontrado:', favorito);
   
       // Verificar si la película existe en el array
       const peliculaIndex = favorito.arrayIdPeliculas.indexOf(peliculaId);
@@ -100,6 +91,8 @@ const postFavorito = async (req, res)=>{
       // Eliminar la película del array
       favorito.arrayIdPeliculas.splice(peliculaIndex, 1);
   
+      console.log('Película eliminada, array actualizado:', favorito.arrayIdPeliculas);
+  
       // Guardar el documento actualizado
       await favorito.save();
   
@@ -109,6 +102,11 @@ const postFavorito = async (req, res)=>{
       return res.status(500).json({ error: "Error al eliminar la película de favoritos", details: error });
     }
   };
+  
+  module.exports = deleteFavorito;
+
+
+  
   
 
 
