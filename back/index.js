@@ -6,6 +6,7 @@ const cors = require("cors");
 dotenv.config()
 const cloudinary = require("cloudinary").v2;
 
+
 const peliculasRouter = require("./src/api/routes/peliculas.routes")
 const listasRouter = require("./src/api/routes/lista.routes");
 const userRoutes = require('./src/api/routes/users.routes');
@@ -49,13 +50,15 @@ app.use("/favoritos", favoritosRoutes);
 
 
 
+
 /* Quiero que tengas un sitio al que ir, cualquier endpoint que te de me muestras : */
-app.use("/", (req,res)=>{ /* en home muestra : */
+/* app.use("/", (req,res)=>{ en home muestra :
     res.send("servidor en marcha")
     //res.json("esto es el home")
-});
+}); */
 
 
+/* creamos el checkout para generar los pagos */
 /*  DEFINIR EL PUERTO E INICIAR LA ESCUCHA */
 app.listen(PORT, ()=> console.log(`Escuchando en el puerto http://localhost:${PORT}`))
 

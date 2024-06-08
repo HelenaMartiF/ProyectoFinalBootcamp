@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
 
 const favoritoSchema = new mongoose.Schema(
   {
-    idUsuario: { type: String, required: true, unique: true },
-    arrayIdPeliculas: { type: Array },
+    idUsuario: { type: mongoose.Schema.Types.ObjectId, ref: "user"},
+    arrayIdPeliculas: [{ type: mongoose.Schema.Types.ObjectId, ref: "pelicula"}],
   },
   { timestamps: true }
 );

@@ -4,7 +4,7 @@ import Home from "./pages/home/Home";
 import Gallery from "./pages/gallery/Gallery";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Navigator from "./core/navigator/Navigator";
+/* import Navigator from "./core/navigator/Navigator"; */
 import { useState } from "react";
 import { JwtContext } from "./context/jwtContext";
 import { RequireAuth } from "./components/RequireAuth";
@@ -18,7 +18,7 @@ function App() {
   return (
     <JwtContext.Provider value={{ jwt, setJwt }}>
       <Router>
-        <Navigator />
+        {/* <Navigator /> */}
         {/* el navegador va siempre dentro del router, para que nos lleve a los links */}
         <Routes>
           <Route path="/" element={<Home />} />

@@ -14,18 +14,14 @@ try{
 
 /* POST */
 const postListas = async (req, res)=>{
-  /* console.log("funciona"); */
+  console.log("funciona");
   console.log(req.body);
   try{
  
   
   const newLista = new Lista (req.body);
-
-  if (req.file) {
-    newLista.portada = req.file.path;
-  }
   const createdLista = await newLista.save();
-  
+  console.log(createdLista);
   return res.status(201).json(createdLista);
   }catch(error){
     console.log(error);
