@@ -38,6 +38,7 @@ const Navigator = () => {
             <Link className="link" to="/peliculas">Peliculas</Link>
           </div>
 
+
           <div className="right_side">
           <SearchIcon className="icons"/>
           <NotificationsNoneIcon className="icons"/>
