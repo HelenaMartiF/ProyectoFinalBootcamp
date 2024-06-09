@@ -5,7 +5,6 @@ import { useContext } from "react";
 import { JwtContext } from "../../context/jwtContext";
 import "./Login.scss";
 
-
 const Login = () => {
   // Estas dos funcionalidades vienen por defecto en el useForm
   const { register, handleSubmit } = useForm();
@@ -24,7 +23,7 @@ const Login = () => {
     });
   };
 
-/*   const handleHome = () => {
+  /*   const handleHome = () => {
     console.log('funciona')
     navigate("/");
   };
@@ -32,18 +31,18 @@ const Login = () => {
 
   return (
     <div className="login">
-
       {/* LOGO */}
-      <div className="top" >
-        <div className="logo_container" >
-        <Link to='/'>
-          <img className="logo" src="/logo.png" alt="" />
+      <div className="top">
+        <div className="wrapper">
+          <Link to="/">
+            <img className="logo" src="/logo.png" alt="" />
           </Link>
         </div>
       </div>
 
       {/* FORMULARIO LOGIN */}
-      <div className="container_login">
+      <div className="container">
+        <h1>Iniciar sesión</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Email:</label>
           <input
@@ -52,15 +51,23 @@ const Login = () => {
             placeholder="Introduzca su email"
             {...register("email", { required: true })}
           />
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Contraseña:</label>
           <input
             type="password"
             id="password"
             placeholder="Introduzca su contraseña"
             {...register("password", { required: true })}
           />
-          <button type="submit"> Login</button>
-
+          <span>
+            Nuevo en Ullfix? <b>Subscríbete ahora.</b>
+          </span>
+          <small>
+            Esta página está protegida por Google reCAPTCHA para garantizar que
+            no sea un bot.
+          </small>
+          <button className="button" type="submit">
+            Entrar
+          </button>
         </form>
       </div>
     </div>

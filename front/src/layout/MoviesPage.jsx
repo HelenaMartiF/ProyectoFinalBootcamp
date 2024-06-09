@@ -20,11 +20,6 @@ function MoviesPage() {
     <>
     <Navigator/>
     <SliderMovies/>
-    
-
-
-
-
 
     <ul>
       {/* Mapeamos peliculas y las pintamos en Galeria */}

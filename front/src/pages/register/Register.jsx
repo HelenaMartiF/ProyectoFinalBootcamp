@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form"; //4.esto es lo que hemos instalado en la terminal
 import { API } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import "./Register.scss";
+
 const Register = () => {
   //1. creamos el formulario de register
   // Estas dos funcionalidades vienen por defecto en el useForm
@@ -17,10 +19,21 @@ const Register = () => {
     });
   };
   return (
+    <div className="register">
+          {/* LOGO */}
+          <div className="top" >
+        <div className="wrapper" >
+        <Link to='/'>
+          <img className="logo" src="/logo.png" alt="" />
+          </Link>
+        </div>
+      </div>
+      <div className="container">
+      <h1>Registrarse</h1>
     <form onSubmit={handleSubmit(onSubmit)}> {/* llama a onSubmit, que recibe lo que viene del formulario */}
       {" "}
       {/* cuando hacemos en onsubmit, que le damos al botón. El handleSubmit es un manipulador de una funcion. Cuando el formulario es válido recoge los campos , es el que controla las cosas y le decimos la funcion que queremos que nos llame */}
-      <label htmlFor="username">User Name:</label>{" "}
+      <label htmlFor="username">Nombre de usuario:</label>{" "}
       {/* este label se vincula con el htmlfor */}
       <input
         type="username"
@@ -28,7 +41,7 @@ const Register = () => {
         placeholder="Introduzca su nombre de usuario"
         {...register("username", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
-      <label htmlFor="name">Name:</label>{" "}
+      <label htmlFor="name">Nombre:</label>{" "}
       {/* este label se vincula con el htmlfor */}
       <input
         type="name"
@@ -36,7 +49,7 @@ const Register = () => {
         placeholder="Introduzca su nombre"
         {...register("name", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
-      <label htmlFor="lastname">Last Name:</label>
+      <label htmlFor="lastname">Apellido:</label>
       {/* este label se vincula con el htmlfor */}
       <input
         type="lastname"
@@ -52,7 +65,7 @@ const Register = () => {
         placeholder="Introduzca su email"
         {...register("email", { required: true })} //este input le decimos el email y el id, aqui le hacemos la copia con el ..register
       />
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password">Contraseña:</label>
       {/* esto son los dos valores requeridos que le hemos puesto en el back un email y un password */}
       <input
         type="password"
@@ -60,8 +73,10 @@ const Register = () => {
         placeholder="Introduzca su contraseña"
         {...register("password", { required: true })} //con este formuladio ya está recogido
       />
-      <button type="submit"> Register</button>
+      <button className="button" type="submit"> Register</button>
     </form>
+    </div>
+    </div>
   );
 };
 
