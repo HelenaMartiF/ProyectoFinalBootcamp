@@ -1,4 +1,5 @@
 import './galleryLists.scss'
+
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ListItem from '../listItem/ListItem'
@@ -26,6 +27,7 @@ function GalleryLists() {
   return (
     <div className='list'>
 <span className='listTitle'>Seguir viendo</span>
+
         <div className='wrapper'>
             <ArrowBackIosNewIcon className="sliderArrow left" onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}/>
@@ -42,6 +44,7 @@ function GalleryLists() {
             </div>
             <ArrowForwardIosIcon className='sliderArrow rigth' onClick={() => handleClick("rigth")}/>
         </div> 
+
     </div>
   )
 }
