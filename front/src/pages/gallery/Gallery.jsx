@@ -6,9 +6,8 @@ import './Gallery.scss'
 
 
 const Gallery = () => {
-
   return (
-    <div className='gallery'>
+    <div className="gallery">
       <Navigator/>
       <SliderGallery/>
       <GalleryLists/>
