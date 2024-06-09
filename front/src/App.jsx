@@ -11,6 +11,7 @@ import { RequireAuth } from "./components/RequireAuth";
 import FavPage from "./layout/FavPage";
 import MoviesPage from "./layout/MoviesPage";
 import './App.scss'
+import Watch from "./pages/watch/Watch";
 
 
 function App() {
@@ -36,9 +37,12 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/favoritos" element={<FavPage/>}/>
           <Route path="/peliculas" element={<MoviesPage/>} />
+          <Route path="/watch" element={<Watch />} />
         </Routes>
       </Router>
     </JwtContext.Provider>
+
+  
   );
 }
 

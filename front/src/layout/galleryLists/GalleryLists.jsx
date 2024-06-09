@@ -26,7 +26,7 @@ function GalleryLists() {
   };
   return (
     <div className='list'>
-<span className='listTitle'>Seguir viendo</span>
+        <span className='listTitle'>Seguir viendo</span>
 
         <div className='wrapper_lists'>
             <ArrowBackIosNewIcon className="sliderArrow left" onClick={() => handleClick("left")}
@@ -40,9 +40,10 @@ function GalleryLists() {
                 <ListItem index={5}/>
                 <ListItem index={6}/>
                 <ListItem index={7}/>
+                <ListItem index={8}/>
                 <ListItem index={9}/>
             </div>
-            <ArrowForwardIosIcon className='sliderArrow rigth' onClick={() => handleClick("rigth")}/>
+            <ArrowForwardIosIcon className='sliderArrow right' onClick={() => handleClick("right")}/>
         </div> 
 
     </div>

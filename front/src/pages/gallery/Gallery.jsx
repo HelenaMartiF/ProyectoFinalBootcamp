@@ -14,8 +14,6 @@ const Gallery = () => {
       <GalleryLists/>
       <GalleryLists/>
       <GalleryLists/>
-      <GalleryLists/>
-      
 
     </div>
   );

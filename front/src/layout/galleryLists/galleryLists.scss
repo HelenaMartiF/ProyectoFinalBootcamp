@@ -1,5 +1,5 @@
 .list{
-    background-color: var(--main-color);
+  /*   background-color: var(--main-color); */
     width: 100%;
     margin-top: 10px;
 }
@@ -41,6 +41,7 @@
 .container_galleryLists {
     margin-left: 50px;
     display: flex;
+    flex-direction: row;
     margin-top: 10px;
     width: max-content;
     transform: translateX(0px);
