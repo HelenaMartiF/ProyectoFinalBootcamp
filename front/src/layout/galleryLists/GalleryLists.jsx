@@ -25,7 +25,7 @@ function GalleryLists() {
   };
   return (
     <div className='list'>
-<span className='listTitle'>Seguir viendo</span>
+    <span className='listTitle'>Seguir viendo</span>
         <div className='wrapper'>
             <ArrowBackIosNewIcon className="sliderArrow left" onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}/>
