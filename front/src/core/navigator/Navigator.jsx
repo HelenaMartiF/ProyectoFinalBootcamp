@@ -40,8 +40,9 @@ const Navigator = () => {
             <img className="logo" src="/logo.png" />
 
             <Link className="link" to="/gallery">Inicio</Link>
-            <Link className="link" to="/favoritos">Favoritos</Link>
             <Link className="link" to="/peliculas">Peliculas</Link>
+            <Link className="link" to="/favoritos">Favoritos</Link>
+            
           </div>
 
 
