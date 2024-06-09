@@ -15,12 +15,13 @@ export const RequireAuth = ({ children }) =>{
   const [isAuthenticated, setIsAuthenticated] = useState(null);/* segun entra el codigo su estado inicial es null */
 
   useEffect(() => { /* hace la peticion a la ruta */
-  const token = localStorage.getItem("token")
-    if (token) {
+  const token = localStorage.getItem("token") /* se obtiene el token almacenado en localStorage */
+    if (token) { /* si hay un token  */
       API.get("users/checksession", token).then((res) => {
           console.log(res);
           setIsAuthenticated(true);
         }).catch((err) => {
+          console.log("peta aquí");
           console.log(err);
           setIsAuthenticated(false);
         });

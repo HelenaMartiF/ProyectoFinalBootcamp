@@ -1,8 +1,11 @@
 import React from 'react'
+import Navigator from '../core/navigator/Navigator'
 
 function FavPage() {
   return (
-    <div>PAGINA DE FAVORITOS
+    <div>
+    <Navigator/>
+    PAGINA DE FAVORITOS
     CONTIENE LISTA DE FAVORITOS DEL USUARIO </div>
   )
 }
