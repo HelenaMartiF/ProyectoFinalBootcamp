@@ -11,6 +11,11 @@ const Gallery = () => {
       <Navigator/>
       <SliderGallery/>
       <GalleryLists/>
+      <GalleryLists/>
+      <GalleryLists/>
+      <GalleryLists/>
+      <GalleryLists/>
+      
 
     </div>
   );

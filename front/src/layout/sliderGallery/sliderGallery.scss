@@ -1,10 +1,10 @@
-.main_container{
+.main_container_sliderGallery{
     height: 90vh;
-    position: relative;    
+    position: relative;     /* ESTE NO ES */
 }
 
 /* Imagen slider FONDO */
-.main_container_img{
+.main_container_img_sliderGallery{
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -12,9 +12,9 @@
 
 
 /* Div -> imagen título, descripción película, botón ver e info. ENCIMA DE SLIDER */
-.info{
+.info_sliderGallery{
     width: 31%;
-    position: absolute;
+    position: absolute; /* ESTE NO ES */
     left: 50px;
     bottom: 38px;
     color:white;
@@ -23,18 +23,18 @@
 }
 
 /* Imagen título SLIDER */
-.info_img{
+.info_img_sliderGallery{
     width: 400px;
 }
 
 /* Descripción SLIDER */
-.desc{
+.desc_sliderGallery{
     margin: 20px 0px;
     
 }
 
 /* Botones Play e Info */
-.buttons{
+.buttons_gallery{
     display: flex;
 
     button{

@@ -22,15 +22,15 @@ const Register = () => {
     <div className="register">
           {/* LOGO */}
           <div className="top" >
-        <div className="wrapper" >
+        <div className="wrapper_register" >
         <Link to='/'>
-          <img className="logo" src="/logo.png" alt="" />
+          <img className="logo_register" src="/logo.png" alt="" />
           </Link>
         </div>
       </div>
-      <div className="container">
+      <div className="container_register">
       <h1>Registrarse</h1>
-    <form onSubmit={handleSubmit(onSubmit)}> {/* llama a onSubmit, que recibe lo que viene del formulario */}
+    <form className="form_register" onSubmit={handleSubmit(onSubmit)}> {/* llama a onSubmit, que recibe lo que viene del formulario */}
       {" "}
       {/* cuando hacemos en onsubmit, que le damos al botón. El handleSubmit es un manipulador de una funcion. Cuando el formulario es válido recoge los campos , es el que controla las cosas y le decimos la funcion que queremos que nos llame */}
       <label htmlFor="username">Nombre de usuario:</label>{" "}
@@ -73,7 +73,7 @@ const Register = () => {
         placeholder="Introduzca su contraseña"
         {...register("password", { required: true })} //con este formuladio ya está recogido
       />
-      <button className="button" type="submit"> Register</button>
+      <button className="button_register" type="submit"> Register</button>
     </form>
     </div>
     </div>

@@ -33,17 +33,17 @@ const Login = () => {
     <div className="login">
       {/* LOGO */}
       <div className="top">
-        <div className="wrapper">
+        <div className="wrapper_login">
           <Link to="/">
-            <img className="logo" src="/logo.png" alt="" />
+            <img className="logo_login" src="/logo.png" alt="" />
           </Link>
         </div>
       </div>
 
       {/* FORMULARIO LOGIN */}
-      <div className="container">
+      <div className="container_login">
         <h1>Iniciar sesión</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="form_login" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -58,14 +58,14 @@ const Login = () => {
             placeholder="Introduzca su contraseña"
             {...register("password", { required: true })}
           />
-          <span>
+          <span className="subscribete" >
             Nuevo en Ullfix? <b>Subscríbete ahora.</b>
           </span>
           <small>
             Esta página está protegida por Google reCAPTCHA para garantizar que
             no sea un bot.
           </small>
-          <button className="button" type="submit">
+          <button className="button_login" type="submit">
             Entrar
           </button>
         </form>
