@@ -28,10 +28,10 @@ function GalleryLists() {
     <div className='list'>
 <span className='listTitle'>Seguir viendo</span>
 
-        <div className='wrapper'>
+        <div className='wrapper_lists'>
             <ArrowBackIosNewIcon className="sliderArrow left" onClick={() => handleClick("left")}
           style={{ display: !isMoved && "none" }}/>
-            <div className='container' ref={listRef}>
+            <div className='container_galleryLists' ref={listRef}>
                 <ListItem index={0}/>
                 <ListItem index={1}/>
                 <ListItem index={2}/>

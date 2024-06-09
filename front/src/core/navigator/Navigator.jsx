@@ -34,10 +34,10 @@ const Navigator = () => {
     <>
       <div className= {isScrolled ? "main_navBar scrolled" : "main_navBar"}>
       {/* activa función onscroll, si se detecta que hay scroll va a activar la clase scrolled, sino solo va a coger main_navbar */}
-        <div className="container">
+        <div className="container_nav">
 
           <div className="left_side">
-            <img className="logo" src="/logo.png" />
+            <img className="logo_navigator" src="/logo.png" />
 
             <Link className="link" to="/gallery">Inicio</Link>
             <Link className="link" to="/peliculas">Peliculas</Link>

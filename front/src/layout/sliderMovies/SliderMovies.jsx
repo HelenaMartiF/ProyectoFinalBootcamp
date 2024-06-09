@@ -15,7 +15,7 @@ function SliderMovies() {
 
 
   return (
-    <div className='main_container'>
+    <div className='main_container_sliderMovies'>
       <div className= {isScrolled ? 'category scrolled' : 'category'}>
         <span className='genreTitle'>Películas</span>
         <select name='genero' id='genero'>
@@ -31,14 +31,14 @@ function SliderMovies() {
             <option value="Terror">Terror</option>
         </select>
       </div>
-      <img className='main_container_img' src="./bannerInicio2.jpg"/>
+      <img className='main_container_img_sliderMovies' src="./bannerInicio2.jpg"/>
       
-      <div className='info'>
-        <img className='info_img' src="./brigada3.png"/>
-        <span className='desc'>
+      <div className='info_sliderMovies'>
+        <img className='info_img_sliderMovies' src="./brigada3.png"/>
+        <span className='desc_sliderMovies'>
           En 2029, la unidad de élite de la policía Illang lucha contra un grupo de terroristas que se opone a la unificación de las dos Coreas. ¿Será este el único enemigo que acecha?
         </span>
-        <div className='buttons'>
+        <div className='buttons_movies'>
           <button className='play'>
             <PlayArrowIcon/>
             <span>Reproducir</span>

@@ -12,18 +12,18 @@
 /*   position: relative;  */
   }
 
-.wrapper {
+.wrapper_login {
   padding: 20px 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo {
+.logo_login {
   height: 40px;
 }
 
-.button{
+.button_login{
   height: 40px;
   text-decoration: none;
   background-color: rgb(39, 248, 48);
@@ -35,7 +35,7 @@
   font-weight: 500;
 }
 
-.container {
+.container_login {
   text-decoration: none;
   width: 100%;
   height: 100%;
@@ -49,23 +49,20 @@
   color: white;
 }
 
-.container h1 {
+.container_login h1 {
   font-size: 50px;
 }
 
-.container h2 {
+.container_login h2 {
   margin: 20px;
 }
 
-.container p {
+.container_login p {
   font-size: 20px;
 }
 
-.main_container{
-  background-color: var(--main-color);
-}
 
-form {
+.form_login {
   width: 300px;
   height: 300px;
   padding: 30px;
@@ -74,26 +71,30 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
 
-input {
-  height: 40px;
-  border-radius: 5px;
-  background-color: gray;
-  color: white;
-  padding-left: 10px;
-
-  &::placeholder {
-    color: lightgray;
+  input {
+    height: 40px;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    padding-left: 10px;
+  
+    &::placeholder {
+      color: lightgray;
+    }
   }
+
+
 }
 
-span {
+
+
+.subscribete {
   color: lightgray;
 }
 
-b {
+/* b {
     color: white;
-  }
+  } */
 
 
