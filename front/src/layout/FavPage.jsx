@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Navigator from '../core/navigator/Navigator'
 
 function FavPage() {
