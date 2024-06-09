@@ -1,15 +1,20 @@
 /* import SliderGallery from '../../layout/sliderGallery/SliderGallery'; */
 import Navigator from '../../core/navigator/Navigator';
-import SliderGallery from '../../layout/sliderGallery/SliderGallery'
+import SliderGallery from '../../layout/sliderGallery/SliderGallery';
+import GalleryLists from '../../layout/galleryLists/GalleryLists';
 import './Gallery.scss'
 
 
 const Gallery = () => {
   
   return (
-    <div>
+    <div className="gallery">
       <Navigator/>
       <SliderGallery/>
+      <GalleryLists/>
+      <GalleryLists/>
+      <GalleryLists/>
+      <GalleryLists/>
     </div>
   );
 };

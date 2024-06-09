@@ -1,12 +1,23 @@
-
+import { useState } from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 import './sliderMovies.scss'
 
 function SliderMovies() {
+
+  const [isScrolled, setIsScrolled] = useState(false); /* detectar si se hace scroll */
+
+  window.onscroll = () =>{
+    setIsScrolled(window.pageYOffset === 0 ? false : true); /* si la página está arriba del todo scroll = 0, si no es igual a 0 significa que se está haciendo scroll así que se activa */
+    return () => (window.onscroll = null);
+  }
+
+
   return (
     <div className='main_container'>
-      <div className='category'>
+      <div className= {isScrolled ? 'category scrolled' : 'category'}>
+        <span className='genreTitle'>Películas</span>
         <select name='genero' id='genero'>
             <option>Género</option>
             <option value="Acción">Acción</option>
