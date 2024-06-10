@@ -3,7 +3,7 @@ import { API } from "../services/api";
 import { useEffect, useState } from "react";
 
 
-export const RequireAuth = ({ children }) =>{
+export const RequireAuth = ({children}) =>{
 /*   let location = useLocation();
   //console.log(location);
 
@@ -21,7 +21,6 @@ export const RequireAuth = ({ children }) =>{
           console.log(res);
           setIsAuthenticated(true);
         }).catch((err) => {
-          console.log("peta aquí");
           console.log(err);
           setIsAuthenticated(false);
         });

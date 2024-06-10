@@ -1,16 +1,16 @@
-import './galleryLists.scss'
-
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ListItem from '../listItem/ListItem'
+import "./galleryLists.scss";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ListItem from "../listItem/ListItem";
 import { useRef, useState } from "react";
 
-function GalleryLists() {
 
+function GalleryLists(lista) {
+  
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
 
- const listRef = useRef();
+  const listRef = useRef();
 
   const handleClick = (direction) => {
     setIsMoved(true);
@@ -25,29 +25,27 @@ function GalleryLists() {
     }
   };
   return (
-    <div className='list'>
-        <span className='listTitle'>Seguir viendo</span>
+    <div className="list">
+      <span className="listTitle">{lista.lista.genero}</span>
 
-        <div className='wrapper_lists'>
-            <ArrowBackIosNewIcon className="sliderArrow left" onClick={() => handleClick("left")}
-          style={{ display: !isMoved && "none" }}/>
-            <div className='container_galleryLists' ref={listRef}>
-                <ListItem index={0}/>
-                <ListItem index={1}/>
-                <ListItem index={2}/>
-                <ListItem index={3}/>
-                <ListItem index={4}/>
-                <ListItem index={5}/>
-                <ListItem index={6}/>
-                <ListItem index={7}/>
-                <ListItem index={8}/>
-                <ListItem index={9}/>
-            </div>
-            <ArrowForwardIosIcon className='sliderArrow right' onClick={() => handleClick("right")}/>
-        </div> 
-
+      <div className="wrapper_lists">
+        <ArrowBackIosNewIcon
+          className="sliderArrow left"
+          onClick={() => handleClick("left")}
+          style={{ display: !isMoved && "none" }}
+        />
+        <div className="container_galleryLists" ref={listRef}>
+          {lista.lista.arrayIdPeliculas.map((item, i) => (
+            <ListItem key={i} index={i} item={item} />
+          ))}
+        </div>
+        <ArrowForwardIosIcon
+          className="sliderArrow right"
+          onClick={() => handleClick("right")}
+        />
+      </div>
     </div>
-  )
+  );
 }
 
-export default GalleryLists
+export default GalleryLists;
