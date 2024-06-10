@@ -43,3 +43,12 @@ function MoviesPage() {
 }
 
 export default MoviesPage;
+//crear variable de estado para el genero de la pelicula tiene que ser un strin
+//crear la funcion que cambia a esta variable de estado y mandarlo por props a slidermovies
+//escuchar un evento onchange sobre el select y ejecutar función recibida por props
+//hacer el filtro 
+/*
+peliculas.filter(pelicula=>{
+  return pelicula.genero === "valriable de estado del genero"
+})
+*/

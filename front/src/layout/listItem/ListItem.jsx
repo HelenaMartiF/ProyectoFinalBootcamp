@@ -7,8 +7,8 @@ import { useState } from "react";
 
 export default function ListItem(item) {
   const [isHovered, setIsHovered] = useState(false);
-  const trailer =
-    "/atlasTrailer.mp4";
+  const trailer = item.item.trailer;
+    /* "/atlasTrailer.mp4"; */
 
   return (
     <div
