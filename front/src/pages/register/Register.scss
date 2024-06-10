@@ -40,8 +40,6 @@
   font-size: 50px;
 }
 
-
-
 .form_register {
   width: 300px;
   height: 300px;
@@ -58,19 +56,12 @@
     background-color: gray;
     color: white;
     padding-left: 10px;
-  
+
     &::placeholder {
       color: lightgray;
     }
   }
 }
-
-
-
-
-/* b {
-  color: white;
-} */
 
 .button_register {
   height: 40px;

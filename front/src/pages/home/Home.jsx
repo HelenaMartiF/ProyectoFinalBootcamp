@@ -1,12 +1,14 @@
 import "./Home.scss";
 import { Link } from "react-router-dom";
 
+
 const Home = () => {
   return (
     <div className="home">
         <div className="wrapper_home">
           <img className="logo_home" src="/logo.png" alt="" />
           <Link className="button_home" to="/login">Iniciar sesión</Link>
+
         </div>
 
         <div className="main_container_home">
@@ -19,7 +21,7 @@ const Home = () => {
     
           <div className="input">
             <input placeholder="Dirección de correo"></input>
-            <Link className="button_home" to="/register">Empezar</Link> 
+            <Link className="button_home_register" to="/register">Empezar</Link> 
           </div>
         </div>
     </div>
