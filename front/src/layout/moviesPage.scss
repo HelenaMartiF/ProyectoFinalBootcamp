@@ -2,3 +2,19 @@
     background-color: var(--main-color);
     overflow: hidden;   
 }
+
+.main_peliculas{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    color: white;
+    margin-top: 10px;
+    justify-content: space-evenly;
+
+    img{
+        width: 225px;
+        height: 275px;
+        object-fit: cover;
+        margin-top: 15px;
+    }
+}
