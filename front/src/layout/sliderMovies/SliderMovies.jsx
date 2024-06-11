@@ -1,25 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import './sliderMovies.scss';
 
-import './sliderMovies.scss'
+function SliderMovies({ onGeneroChange }) {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-function SliderMovies() {
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.pageYOffset === 0 ? false : true);
+    };
 
-  const [isScrolled, setIsScrolled] = useState(false); /* detectar si se hace scroll */
+    window.addEventListener('scroll', handleScroll);
 
-  window.onscroll = () =>{
-    setIsScrolled(window.pageYOffset === 0 ? false : true); /* si la página está arriba del todo scroll = 0, si no es igual a 0 significa que se está haciendo scroll así que se activa */
-    return () => (window.onscroll = null);
-  }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
+  const handleSelectChange = (event) => {
+    const selectedGenre = event.target.value;
+    console.log("Género seleccionado en el dropdown:", selectedGenre); // Verifica el valor seleccionado
+    onGeneroChange(selectedGenre);
+  };
 
   return (
     <div className='main_container_sliderMovies'>
-      <div className= {isScrolled ? 'category scrolled' : 'category'}>
+      <div className={isScrolled ? 'category scrolled' : 'category'}>
         <span className='genreTitle'>Películas</span>
-        <select name='genero' id='genero'>
-            <option>Género</option>
+        <select name='genero' id='genero' onChange={handleSelectChange}>
+            <option value="">Género</option>
             <option value="Acción">Acción</option>
             <option value="Aventuras">Aventuras</option>
             <option value="Ciencia Ficción">Ciencia Ficción</option>
@@ -31,10 +41,10 @@ function SliderMovies() {
             <option value="Terror">Terror</option>
         </select>
       </div>
-      <img className='main_container_img_sliderMovies' src="./bannerInicio2.jpg"/>
+      <img className='main_container_img_sliderMovies' src="./bannerInicio2.jpg" alt="Banner"/>
       
       <div className='info_sliderMovies'>
-        <img className='info_img_sliderMovies' src="./brigada3.png"/>
+        <img className='info_img_sliderMovies' src="./brigada3.png" alt="Brigada"/>
         <span className='desc_sliderMovies'>
           En 2029, la unidad de élite de la policía Illang lucha contra un grupo de terroristas que se opone a la unificación de las dos Coreas. ¿Será este el único enemigo que acecha?
         </span>
@@ -49,9 +59,8 @@ function SliderMovies() {
           </button>
         </div>
       </div>
-      
     </div>
-  )
+  );
 }
 
-export default SliderMovies
+export default SliderMovies;
