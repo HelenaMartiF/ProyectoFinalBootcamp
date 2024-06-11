@@ -3,7 +3,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './sliderMovies.scss';
 
-function SliderMovies({ onGeneroChange }) {
+function SliderMovies( {onGeneroChange} ) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -48,13 +48,13 @@ function SliderMovies({ onGeneroChange }) {
         <span className='desc_sliderMovies'>
           En 2029, la unidad de élite de la policía Illang lucha contra un grupo de terroristas que se opone a la unificación de las dos Coreas. ¿Será este el único enemigo que acecha?
         </span>
-        <div className='buttons_movies'>
-          <button className='play'>
-            <PlayArrowIcon/>
+        <div className="buttons_movies">
+          <button className="play">
+            <PlayArrowIcon />
             <span>Reproducir</span>
           </button>
-          <button className='more'>
-            <InfoOutlinedIcon/>
+          <button className="more">
+            <InfoOutlinedIcon />
             Más información
           </button>
         </div>

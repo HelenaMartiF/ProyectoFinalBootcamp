@@ -9,7 +9,6 @@ import { API } from '../../services/api'
 const Gallery = () => {
 
   const[listas, setLista] = useState([]);
-/*   console.log("Hola patata") */
   useEffect(()=>{
     
     const getRandomLists = async() =>{
@@ -17,7 +16,6 @@ const Gallery = () => {
         /* Petición de listas a API */
         API.get("listas").then((res) =>{
           setLista(res.data)
-          console.log(res.data)
           
         })
 

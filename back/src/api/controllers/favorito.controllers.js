@@ -3,7 +3,8 @@ const Favorito = require("../models/favorito.model");
 const getFavorito = async (req, res) => {
   /* atacamos a la colección de peliculas */
   try {
-    const allFavorito = await Favorito.find().populate({
+    console.log(req.user);
+    const allFavorito = await Favorito.find({idUsuario: req.user._id}).populate({
       path: "arrayIdPeliculas" /* le decimos que nos traiga lo que contiene arrayIdPeliculas */,
       select: "titulo" /* le decimos que queremos que nos muestre */,
     });
