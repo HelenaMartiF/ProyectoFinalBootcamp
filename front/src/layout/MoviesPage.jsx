@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import Navigator from "../core/navigator/Navigator";
 import { API } from "../services/api";
 import SliderMovies from "./sliderMovies/SliderMovies";
+import MoviesListItem from "./moviesListItem/MoviesListItem";
+
 import "./moviesPage.scss";
 
 function MoviesPage() {
   const [peliculas, setPeliculas] = useState([]);
+  const [generoSeleccionado, setGeneroSeleccionado] = useState("");
 
   useEffect(() => {
     const getPeliculas = async () => {
       try {
-        API.get("peliculas").then((res) => {
-          setPeliculas(res.data);
-        });
+        const res = await API.get("peliculas");
+        setPeliculas(res.data);
+        /* console.log("Películas recibidas:", res.data); // Verifica los datos recibidos */
       } catch (error) {
         console.log("Error en tryCatch MoviesPage", error);
       }
@@ -21,22 +24,31 @@ function MoviesPage() {
     getPeliculas();
   }, []);
 
+  /* FILTRO */
+  const handleGeneroChange = (genero) => {
+    console.log("Género seleccionado:", genero); // Verifica el género seleccionado
+    setGeneroSeleccionado(genero);
+  };
+
+  const peliculasFiltradas = peliculas.filter((pelicula) => {
+    return generoSeleccionado === "" || pelicula.genero === generoSeleccionado;
+  });
+
+  /* console.log("Películas filtradas:", peliculasFiltradas); // Verifica las películas filtradas */
+
   return (
     <div className="peliculas">
       <Navigator />
-      <SliderMovies />
+      <SliderMovies onGeneroChange={handleGeneroChange} />
+
       <div className="main_peliculas">
-        {peliculas.map((pelicula, index) => (
-          <div key={index}>
-            <img src={pelicula.portada} />
-            {/*             <h1>{pelicula.titulo}</h1> */}
-{/*             <h3>{pelicula.genero}</h3>
-            <h4>{pelicula.fecha}</h4>
-            <h4>{pelicula.duracion}</h4>
-            <h4>{pelicula.tipo}</h4>
-            <p>{pelicula.descripcion}</p> */}
-          </div>
-        ))}
+        {peliculasFiltradas.length > 0 ? (
+          peliculasFiltradas.map((pelicula, index) => (
+            <MoviesListItem key={index} pelicula={pelicula}/>
+          ))
+        ) : (
+          <p>No se encontraron películas para el género seleccionado.</p>
+        )}
       </div>
     </div>
   );

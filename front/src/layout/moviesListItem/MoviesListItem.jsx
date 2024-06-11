@@ -1,27 +1,28 @@
-import "./listItem.scss";
+import { useState } from "react"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import { useState } from "react";
+import "./moviesListItem.scss"
 
-export default function ListItem(item) {
-  const [isHovered, setIsHovered] = useState(false);
-  const trailer = item.item.trailer;
-    /* "/atlasTrailer.mp4"; */
+function MoviesListItem(pelicula) {
+    /* console.log("pinta desde movies", pelicula) */
+    const [isHoveredMovies, setIsHoveredMovies] = useState(false)
+    const trailerMovies = pelicula.pelicula.trailer
+
 
   return (
     <div
-      className="listItem"
-      style={{ left: isHovered && item.index * 225 - 50 + item.index * 2.5 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="listItem_Movies"
+      //style={{ left: isHoveredMovies && pelicula.index * 225 - 50 + pelicula.index * 2.5}}
+      onMouseEnter={() => setIsHoveredMovies(true)}
+      onMouseLeave={() => setIsHoveredMovies(false)}
     >
-      <img src={item.item.portada} alt="" />
-      {isHovered && (
+      <img src={pelicula.pelicula.portada} alt="" />
+      {isHoveredMovies && (
         <>
           <iframe
-            src={trailer}
+            src={trailerMovies}
             autoPlay = "autoPlay"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -39,17 +40,19 @@ export default function ListItem(item) {
               <ThumbDownOffAltIcon className="icon_ListItem" />
             </div>
             <div className="itemInfoTop_ListItem">
-              <span>{item.item.duracion}</span>
-              <span className="limit_ListItem">{item.item.tipo}</span>
-              <span>{item.item.fecha}</span>
+              <span>{pelicula.pelicula.duracion}</span>
+              <span className="limit_ListItem">{pelicula.pelicula.tipo}</span>
+              <span>{pelicula.pelicula.fecha}</span>
             </div>
             <div className="desc_LisItem">
-              {item.item.descripcion}
+              {pelicula.pelicula.descripcion}
             </div>
             
           </div>
         </>
       )}
     </div>
-  );
+  )
 }
+
+export default MoviesListItem
