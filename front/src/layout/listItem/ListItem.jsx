@@ -1,14 +1,28 @@
+
 import "./listItem.scss";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import { useState } from "react";
+import { API } from '../../services/api';
+import { useState} from 'react';
 
 export default function ListItem(item) {
   const [isHovered, setIsHovered] = useState(false);
+
   const trailer = item.item.trailer;
     /* "/atlasTrailer.mp4"; */
+
+
+    const putAddFav = async (id) =>{
+      try {
+        API.put("addFavorito", id).then((res) =>{
+          console.log("addFavorito", res.data);
+        })
+      } catch (error) {
+        console.log("errFav", error);
+      }
+    }
 
   return (
     <div
@@ -34,7 +48,7 @@ export default function ListItem(item) {
           <div className="itemInfo_ListItem">
             <div className="icons_ListItem">
               <PlayArrowIcon className="icon_ListItem" />
-              <AddIcon className="icon_ListItem" />
+              <AddIcon className="icon_ListItem" onClick={()=>putAddFav(item.item._id)}/>
               <ThumbUpOffAltIcon className="icon_ListItem" />
               <ThumbDownOffAltIcon className="icon_ListItem" />
             </div>

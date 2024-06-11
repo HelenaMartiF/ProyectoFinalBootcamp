@@ -10,8 +10,8 @@ import { JwtContext } from "./context/jwtContext";
 import { RequireAuth } from "./components/RequireAuth";
 import FavPage from "./layout/FavPage";
 import MoviesPage from "./layout/MoviesPage";
-import './App.scss'
 import Watch from "./pages/watch/Watch";
+/* import MovieDetail from "./layout/movieDetail/MovieDetail"; */
 
 
 function App() {
@@ -40,7 +40,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/favoritos" element={<FavPage/>}/>
-          <Route path="/peliculas" element={<MoviesPage/>} />
+          <Route path="/peliculas" element={<MoviesPage />} />
+        {/*   <Route path="/pelicula/:id" element={<MovieDetail />} /> */}
           <Route path="/watch" element={<Watch />} />
           
         </Routes>
