@@ -1,0 +1,163 @@
+.main_container_sliderGallery {
+    height: 90vh;
+    position: relative;
+  }
+  
+  /* Imagen slider FONDO */
+  .main_container_img_sliderGallery {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Div -> imagen título, descripción película, botón ver e info. ENCIMA DE SLIDER */
+  .info_sliderGallery {
+    width: 31%;
+    position: absolute;
+    left: 2%;
+    bottom: 2%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Imagen título SLIDER */
+  .info_img_sliderGallery {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Descripción SLIDER */
+  .desc_sliderGallery {
+    margin: 20px 0;
+  }
+  
+  /* Botones Play e Info */
+  .buttons_gallery {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .buttons_gallery button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .buttons_gallery button.play {
+    background-color: white;
+    color: var(--main-color);
+  }
+  
+  .buttons_gallery button.more {
+    background-color: gray;
+    color: white;
+  }
+  
+  /* Texto dentro botones */
+  .buttons_gallery button span {
+    margin-left: 5px;
+  }
+  
+  /* Media Queries para hacer el diseño responsive */
+  @media (max-width: 1200px) {
+    .info_sliderGallery {
+      width: 40%;
+      left: 2%;
+      bottom: 2%;
+    }
+  
+    .info_img_sliderGallery {
+      max-width: 300px;
+    }
+  
+    .buttons_gallery button {
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .info_sliderGallery {
+      width: 50%;
+      left: 2%;
+      bottom: 2%;
+    }
+  
+    .info_img_sliderGallery {
+      max-width: 250px;
+    }
+  
+    .desc_sliderGallery {
+      margin: 15px 0;
+    }
+  
+    .buttons_gallery button {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .info_sliderGallery {
+      width: 70%;
+      left: 2%;
+      bottom: 2%;
+    }
+  
+    .info_img_sliderGallery {
+      max-width: 200px;
+    }
+  
+    .desc_sliderGallery {
+      margin: 10px 0;
+    }
+  
+    .buttons_gallery {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .buttons_gallery button {
+      padding: 5px 10px;
+      font-size: 12px;
+      margin-bottom: 10px;
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .info_sliderGallery {
+      width: 90%;
+      left: 2%;
+      bottom: 2%;
+    }
+  
+    .info_img_sliderGallery {
+      max-width: 150px;
+    }
+  
+    .desc_sliderGallery {
+      margin: 5px 0;
+    }
+  
+    .buttons_gallery {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .buttons_gallery button {
+      padding: 4px 8px;
+      font-size: 10px;
+      margin-bottom: 8px;
+      margin-right: 0;
+    }
+  }
+  

@@ -1,0 +1,17 @@
+.peliculas{
+    background-color: var(--main-color);
+    overflow: hidden;   
+}
+
+.main_peliculas{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    color: white;
+    margin-top: 15px;
+    justify-content: space-evenly;
+    position: relative;
+    
+
+}
+

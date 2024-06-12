@@ -27,7 +27,7 @@ const peliculaSchema = new Schema(
       ],
       require: true,
     } /*para elegir una serie de categorias*/,
-    fecha: {
+    fecha: { 
       type: String,
       require: true,
     },
@@ -45,10 +45,14 @@ const peliculaSchema = new Schema(
     },
     tipo: {
       type: String,
-      default: "Familiares",
-      enum: ["Infantiles", "Juveniles", "Adultos", "Familiares"],
+      default: "+6",
+      enum: ["+6", "+16", "+18"],
       require: true,
     },
+    trailer: {
+      type: String,
+      required: true,
+    }
   },
   {
     timestamps: true /*cuando tenemos una base de datos que se modifica, el timestamp te dice la fecha en la que actualiza y en la que crea*/,

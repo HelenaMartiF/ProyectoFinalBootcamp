@@ -1,0 +1,53 @@
+.main_navBar{
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+
+    &.scrolled{
+        background-color: var(--main-color);
+      }
+      /* cuando hagamos scroll background-color == black
+      if not == transp. */
+};
+
+
+
+.container_nav{
+    padding: 0px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px; 
+};
+
+.left_side{
+    display: flex;
+    align-items: center;
+}
+
+.logo_navigator{
+    height: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.link{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    margin-right: 20px;
+}
+
+.right_side{
+    display: flex;
+    align-items: center;
+}
+
+.icons{
+    cursor: pointer;
+    margin: 0px 15px;
+}
