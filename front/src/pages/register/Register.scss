@@ -74,3 +74,32 @@
   font-size: 18px;
   font-weight: 500;
 }
+.footer {
+  background-color: black;
+  color: green;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 25px 0;
+  position: relative;
+
+  .footer-content {
+      text-align: center;
+
+      p {
+          margin: 5px 0;
+      }
+
+      a {
+          color: green;
+          text-decoration: none;
+          margin: 0 5px;
+
+          &:hover {
+              text-decoration: underline;
+          }
+      }
+  }
+}

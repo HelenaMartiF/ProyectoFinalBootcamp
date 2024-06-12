@@ -1,33 +1,39 @@
 import { useForm } from "react-hook-form";
 import { API } from "../../services/api";
 import { useNavigate, Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { JwtContext } from "../../context/jwtContext";
 import "./Login.scss";
 
 const Login = () => {
-  // Estas dos funcionalidades vienen por defecto en el useForm
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const { setJwt } = useContext(JwtContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [welcomeMessage, setWelcomeMessage] = useState("");
 
   const onSubmit = (formData) => {
     console.log(formData);
+    setIsLoading(true); // Mostrar la pantalla de carga
     API.post("users/login", formData).then((res) => {
-      //1.mandamos al login los campos de formdata
-      //console.log(res);
-      localStorage.setItem("token", res.data.token); //.aqui cuando nos logueamos nos devuelve el token y lo mandamos al localstorage (aqui es donde se guarda el token)
-      localStorage.setItem("email", res.data.user.email); //el setitem te añade uno
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("email", res.data.user.email);
       setJwt(localStorage.getItem("token"));
-      navigate("/gallery"); // UNA VEZ LOGGEADO TE MANDA A GALLERY
+      setIsLoading(false); // Ocultar la pantalla de carga
+      setWelcomeMessage("Bienvenido a Ullfix");
+      setTimeout(() => {
+        navigate("/gallery"); // Redirigir a la galería después de 3 segundos
+      }, 3000);
+    }).catch((error) => {
+      console.error("Error al iniciar sesión:", error);
+      setIsLoading(false); // Ocultar la pantalla de carga en caso de error
+      if (error.response && error.response.data && error.response.data.message === "Invalid email") {
+        alert("Error en email");
+      } else {
+        alert("Error en contraseña");
+      }
     });
   };
-
-  /*   const handleHome = () => {
-    console.log('funciona')
-    navigate("/");
-  };
- */
 
   return (
     <div className="login">
@@ -43,32 +49,48 @@ const Login = () => {
       {/* FORMULARIO LOGIN */}
       <div className="container_login">
         <h1>Iniciar sesión</h1>
-        <form className="form_login" onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Introduzca su email"
-            {...register("email", { required: true })}
-          />
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Introduzca su contraseña"
-            {...register("password", { required: true })}
-          />
-          <span className="subscribete" >
-            Nuevo en Ullfix? <b>Subscríbete ahora.</b>
-          </span>
-          <small>
-            Esta página está protegida por Google reCAPTCHA para garantizar que
-            no sea un bot.
-          </small>
-          <button className="button_login" type="submit">
-            Entrar
-          </button>
-        </form>
+        {isLoading ? (
+          <div className="loading">
+            <p>Cargando...</p>
+          </div>
+        ) : welcomeMessage ? (
+          <div className="welcome">
+            <p>{welcomeMessage}</p>
+          </div>
+        ) : (
+          <form className="form_login" onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Introduzca su email"
+              {...register("email", { required: true })}
+            />
+            {errors.email && errors.email.type === "required" && (
+              <p className="error">Por favor, introduzca su correo electrónico.</p>
+            )}
+            {errors.email && errors.email.type !== "required" && (
+              <p className="error">Error en el email.</p>
+            )}
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Introduzca su contraseña"
+              {...register("password", { required: true })}
+            />
+            <span className="subscribete">
+              Nuevo en Ullfix? <b>Subscríbete ahora.</b>
+            </span>
+            <small>
+              Esta página está protegida por Google reCAPTCHA para garantizar que
+              no sea un bot.
+            </small>
+            <button className="button_login" type="submit">
+              Entrar
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

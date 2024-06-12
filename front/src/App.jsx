@@ -11,6 +11,7 @@ import { RequireAuth } from "./components/RequireAuth";
 import FavPage from "./layout/FavPage";
 import MoviesPage from "./layout/MoviesPage";
 import Watch from "./pages/watch/Watch";
+import Footer from "./components/Footer/Footer";
 /* import MovieDetail from "./layout/movieDetail/MovieDetail"; */
 
 
@@ -43,9 +44,12 @@ function App() {
           <Route path="/peliculas" element={<MoviesPage />} />
         {/*   <Route path="/pelicula/:id" element={<MovieDetail />} /> */}
           <Route path="/watch" element={<Watch />} />
-          
+   
+
+       
         </Routes>
       </Router>
+      <Footer/>
     </JwtContext.Provider>
 
   
