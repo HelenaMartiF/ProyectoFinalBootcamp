@@ -1,0 +1,11 @@
+.favList_main_container{
+    background-color: var(--main-color);
+    color: white;
+    padding: 100px;
+    display: flex;
+    flex-direction: row;
+
+    img{
+        padding: 15px;    
+    }
+}

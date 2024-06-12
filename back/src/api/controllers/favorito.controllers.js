@@ -15,7 +15,7 @@ const getFavorito = async (req, res) => {
   }
 };
 
-const postFavorito = async (req, res) => {
+const postFavorito = async (req, res) => { /* Crea la lista */
   /* console.log(req.body); */
   try {
     const newFavorito = new Favorito(req.body);
@@ -27,7 +27,9 @@ const postFavorito = async (req, res) => {
     return res.status(500).json(error);
   }
 };
-const putFavorito = async (req, res) => {
+
+
+const putFavorito = async (req, res) => { /* Añade a la lista */
   /*   console.log(req.params); */
   try {
     const id = req.user._id;
