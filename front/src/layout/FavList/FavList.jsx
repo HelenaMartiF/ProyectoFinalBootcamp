@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import "./favList.scss"
-import { API } from '../../services/api';
+import { useState, useEffect } from "react";
+import "./favList.scss";
+import { API } from "../../services/api";
 
 function FavList(idPelicula) {
-  console.log(idPelicula);
   const [findId, setFindId] = useState([]);
-
-
-
+  const [idLocated, setIdLocated] = useState(null);
+  
   useEffect(() => {
+    console.log("nos llega idPeliculas", idPelicula);
     const getPeliculas = async () => {
       try {
         const response = await API.get("peliculas");
@@ -22,18 +21,23 @@ function FavList(idPelicula) {
       } catch (error) {
         console.log("Error en getFavLists >> FavLists", error);
       }
-      console.log(findId);
     };
     getPeliculas();
-  },[]); 
+  }, );
+  
+  useEffect(() => {
+    if (findId.length > 0) {
+      const located = findId.find((id) => id._id === idPelicula.favorito._id);
+      setIdLocated(located);
+    }
+  }, [findId, idPelicula]);
+  
 
-   const idLocated = findId.find((id)=> id._id=== idPelicula.favorito._id)
-   console.log("idLocated", idLocated);
-return (
+  return (
     <div className="favList_main_container">
-   {/* <img src={idLocated.portada} alt="" /> */}
-   </div>
-  )
+      <img src={idLocated.portada} alt="" />
+    </div>
+  );
 }
 
-export default FavList
+export default FavList;

@@ -11,9 +11,9 @@ function FavPage() {
     const getFavLists = async () => {
       try {
         const response = await API.get("favoritos");
-        console.log("Respuesta completa del API:", response);
+        console.log("Respuesta de la API .getFav:", response);
         if (response.data) {
-          console.log("Datos recibidos:", response.data);
+          console.log("Datos recibidos .getFav:", response.data);
           setListaFav(response.data);
         } else {
           console.log("La respuesta del API no contiene 'data'");
@@ -22,9 +22,9 @@ function FavPage() {
         console.log("Error en getFavLists >> FavLists", error);
       }
     };
-
+    console.log(listaFav)
     getFavLists();
-  }, []);
+  }, );
 
   return (
     <div className='fav_main_container'>

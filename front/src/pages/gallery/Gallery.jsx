@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { API } from '../../services/api'
 
 
+
 const Gallery = () => {
 
   const[listas, setLista] = useState([]);
@@ -36,8 +37,6 @@ const Gallery = () => {
       {listas.map((listas) =>(
         <GalleryLists key={listas._id} lista={listas}/>
       ))}
-      
-
 
     </div>
   );
