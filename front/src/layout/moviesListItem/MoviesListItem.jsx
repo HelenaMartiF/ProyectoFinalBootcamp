@@ -14,7 +14,7 @@ function MoviesListItem(pelicula) {
   return (
     <div
       className="listItem_Movies"
-      //style={{ left: isHoveredMovies && pelicula.index * 225 - 50 + pelicula.index * 2.5}}
+      style={{ left: isHoveredMovies && pelicula.index * 225 - 50 + pelicula.index * 2.5}}
       onMouseEnter={() => setIsHoveredMovies(true)}
       onMouseLeave={() => setIsHoveredMovies(false)}
     >

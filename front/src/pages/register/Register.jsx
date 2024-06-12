@@ -15,6 +15,7 @@ const Register = () => {
     API.post("users/register", formData).then((res) => {
       //.ESTO ES DONDE QUE QUEREMOS QUE RECOJA ESTE FORMULARIO y le decimos los campos que queremos mandarle es el formdata . Si todo ha ido bien un .then de res
       console.log(res);
+      alert("Usuario registrado con éxito");
       navigate("/login"); //le indicamos que nos navegase al login pero esto no es un campo necesario
     });
   };
