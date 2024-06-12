@@ -2,13 +2,16 @@
 import "./favList.scss"
 
 
-function FavList(favoritos) {
+function FavList() {
 
   
     
   return (
     <div className="favList_main_container">
-    ESTO ES FAV LIST</div>
+
+    ESTO ES FAVORITOS
+    </div>
+
   )
 }
 
