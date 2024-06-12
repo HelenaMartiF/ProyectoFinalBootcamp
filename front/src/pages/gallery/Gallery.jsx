@@ -9,7 +9,6 @@ import { API } from '../../services/api'
 const Gallery = () => {
 
   const[listas, setLista] = useState([]);
-
   useEffect(()=>{
     
     const getRandomLists = async() =>{
