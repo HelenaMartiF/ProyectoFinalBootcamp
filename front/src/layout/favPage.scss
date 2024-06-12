@@ -1,11 +1,42 @@
-.favList_main_container{
+html, body {
+    height: 100%;
+    margin: 0; /* Elimina cualquier margen por defecto */
+}
+
+.fav_main_container {
     background-color: var(--main-color);
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido del contenedor se disponga en una columna */
+}
+
+.favList_main_container {
     color: white;
     padding: 100px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.favList_main_container img {
+    padding: 15px;
+}
+
+/* .fav_main_container{
+    background-color: var(--main-color);
+    height: 100%;
+}
+
+.favList_main_container{
+    
+    color: white;
+    padding: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap ;
+
 
     img{
         padding: 15px;    
     }
-}
+    } */

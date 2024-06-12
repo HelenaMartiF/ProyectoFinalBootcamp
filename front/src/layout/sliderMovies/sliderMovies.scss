@@ -1,5 +1,5 @@
 .main_container_sliderMovies{
-    height: 90vh;
+    height: 100vh;
     position: relative;    /* ESTE NO ES */
 }
 
@@ -53,7 +53,8 @@
 
 /* Imagen título SLIDER */
 .info_img_sliderMovies{
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 }
 
 /* Descripción SLIDER */
