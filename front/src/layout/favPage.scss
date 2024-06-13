@@ -1,42 +1,213 @@
-html, body {
-    height: 100%;
-    margin: 0; /* Elimina cualquier margen por defecto */
-}
-
 .fav_main_container {
-    background-color: var(--main-color);
-    min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% de la altura de la ventana */
-    display: flex;
-    flex-direction: column; /* Asegura que el contenido del contenedor se disponga en una columna */
+  background-color: var(--main-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .favList_main_container {
+  color: white;
+  padding: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  top: 50%;
+}
+
+.listItem_Favoritos {
+  width: 225px;
+  height: 275px;
+  background-color: var(--main-color);
+  margin-right: 30px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  /* position: relative; */ /* padre >> relative */
+
+  /* Imagen portada */
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Ejemplo de transición suave */
+  }
+
+  /* Trailer video portada con hover */
+  iframe {
+    width: 100%;
+    height: 145px;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Inicialmente oculto */
+    transition: opacity 0.3s ease; /* Transición suave de opacidad */
+  }
+
+  /* Hover trailer >> muestra datos película */
+  &:hover {
+    width: 300px;
+    height: 350px;
+    position: relative;
+    /*       position: absolute; */
+    top: -90px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+    border-radius: 5px;
+    margin-bottom: -50px;
+    margin-right: -10px;
+    margin-left: -10px;
+
+    img {
+      height: 140px;
+    }
+    iframe {
+      opacity: 1; /* Mostrar iframe */
+    }
+  }
+}
+
+.itemInfo__Favoritos {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+.icons_Favoritos {
+  display: flex;
+  margin-bottom: 10px;
+}
+.icon_Favoritos {
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.itemInfoTop_Favoritos {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: gray;
+}
+.limit_Favoritos {
+  border: 1px solid gray;
+  padding: 1px 3px;
+  margin: 0 10px;
+}
+.desc_Favoritos {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+  .fav_main_container {
+    background-color: var(--main-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .favList_main_container {
     color: white;
     padding: 100px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
+    top: 50%;
+  }
 
-.favList_main_container img {
-    padding: 15px;
-}
-
-/* .fav_main_container{
+  .listItem_Favoritos {
+    width: 225px;
+    height: 275px;
     background-color: var(--main-color);
-    height: 100%;
-}
-
-.favList_main_container{
-    
+    margin-bottom: 20px;
+    margin-top: 80px;
+    overflow: hidden;
+    cursor: pointer;
     color: white;
-    padding: 100px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap ;
+    border-radius: 5px;
+    position: relative; /* padre >> relative */
 
-
-    img{
-        padding: 15px;    
+    /* Imagen portada */
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease; /* Ejemplo de transición suave */
     }
-    } */
+
+    /* Trailer video portada con hover */
+    iframe {
+      width: 100%;
+      height: 145px;
+      object-fit: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0; /* Inicialmente oculto */
+      transition: opacity 0.3s ease; /* Transición suave de opacidad */
+    }
+
+    /* Hover trailer >> muestra datos película */
+    &:hover {
+      width: 300px;
+      height: 350px;
+      position: relative;
+      /*       position: absolute; */
+      top: -90px;
+      -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+      box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
+      border-radius: 5px;
+      margin-bottom: -50px;
+      margin-right: -10px;
+      margin-left: -10px;
+
+      img {
+        height: 140px;
+      }
+      iframe {
+        opacity: 1; /* Mostrar iframe */
+      }
+    }
+  }
+
+  .itemInfo__Favoritos {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+  .icons_Favoritos {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .icon_Favoritos {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .itemInfoTop_Favoritos {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+  }
+  .limit_Favoritos {
+    border: 1px solid gray;
+    padding: 1px 3px;
+    margin: 0 10px;
+  }
+  .desc_Favoritos {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}

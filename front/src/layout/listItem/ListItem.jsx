@@ -11,16 +11,6 @@ export default function ListItem(item) {
 
   const trailer = item.item.trailer;
 
-  /* const putAddFav = async (id) =>{
-      try {
-        API.put("addFavorito", id).then((res) =>{
-          console.log("addFavorito", res.data);
-        })
-      } catch (error) {
-        console.log("errFav", error);
-      }
-    } */
-
   return (
     <div
       className="listItem"
