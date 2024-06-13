@@ -72,10 +72,7 @@ const putFavorito = async (req, res) => { /* Añade a la lista del usuario  */
 const deleteFavorito = async (req, res) => {
   try {
     const userId = req.user._id; // Obtener el ID del usuario desde el token de autenticación
-    /*       console.log('User ID:', userId); */
-
     const peliculaId = req.body.arrayIdPeliculas; // Obtener el ID de la película de los parámetros
-    /*       console.log('Película ID:', peliculaId); */
 
     // Verificar que peliculaId esté presente
     if (!peliculaId) {
@@ -91,11 +88,8 @@ const deleteFavorito = async (req, res) => {
         .status(404)
         .json({ message: "Favorito no encontrado para el usuario" });
     }
-
-    /* console.log('Favorito encontrado:', favorito); */
-
     // Verificar si la película existe en el array
-    const peliculaIndex = favorito.arrayIdPeliculas.indexOf(peliculaId);
+    const peliculaIndex = favorito.arrayIdPeliculas.findIndex(id => id.toString() === peliculaId.toString());
     if (peliculaIndex === -1) {
       return res
         .status(404)
@@ -104,8 +98,6 @@ const deleteFavorito = async (req, res) => {
 
     // Eliminar la película del array
     favorito.arrayIdPeliculas.splice(peliculaIndex, 1);
-
-    /* console.log('Película eliminada, array actualizado:', favorito.arrayIdPeliculas); */
 
     // Guardar el documento actualizado
     await favorito.save();
@@ -117,11 +109,10 @@ const deleteFavorito = async (req, res) => {
       .status(500)
       .json({
         error: "Error al eliminar la película de favoritos",
-        details: error,
+        details: error.message,
       });
   }
 };
 
-module.exports = deleteFavorito;
 
 module.exports = { getFavorito, postFavorito, deleteFavorito, putFavorito };

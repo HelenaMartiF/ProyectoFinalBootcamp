@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import Navigator from "../core/navigator/Navigator";
-/* import FavList from './FavList/FavList' */
 import { API } from "../services/api";
 import "./favPage.scss";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 
 function FavPage() {
   const [listaFav, setListaFav] = useState();
   const [findId, setFindId] = useState();
   const [isHoveredMovies, setIsHoveredMovies] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("");
   
   useEffect(() => {
     const getFavLists = async () => {
@@ -45,6 +46,28 @@ function FavPage() {
     getPeliculas();
 
   }, []);
+
+  const handleDeleteFavorite = async (peliculaId) => {
+    try {
+      const response = await API.delete("favoritos", {
+        data: { arrayIdPeliculas: peliculaId }
+      });
+
+      if (response.status === 200) {
+        // Actualiza la lista de favoritos en el estado
+        setListaFav((prevListaFav) =>
+          prevListaFav.filter((id) => id !== peliculaId)
+        );
+      }  else {
+        console.log("Error al eliminar la película de favoritos", response);
+        setErrorMessage("Error al eliminar la película de favoritos");
+      }
+    } catch (error) {
+      console.log("Error en handleDeleteFavorite", error);
+      setErrorMessage("Error al eliminar la película de favoritos");
+    }
+  };
+
 
   let result = [];
 
@@ -94,6 +117,7 @@ function FavPage() {
                         <AddIcon className="icon_Favoritos" />
                         <ThumbUpOffAltIcon className="icon_Favoritos" />
                         <ThumbDownOffAltIcon className="icon_Favoritos" />
+                        <CancelPresentationIcon className="icon_Favoritos" onClick={() => handleDeleteFavorite(pelicula._id)}/>
                       </div>
                       <div className="itemInfoTop_Favoritos">
                         <span>{pelicula.duracion}</span>

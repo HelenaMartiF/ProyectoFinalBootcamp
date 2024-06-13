@@ -12,7 +12,7 @@ export default function ListItem(item) {
 
   const trailer = item.item.trailer;
 
-  const handleAddClick = async () => {
+  const handleAddClick = async () => { /* AÑADIR FAV */
     try {
       await API.put('favoritos', {
         arrayIdPeliculas: item.item._id
@@ -26,6 +26,8 @@ export default function ListItem(item) {
       console.error(error);
     }
   };
+
+  
 
   return (
     <div

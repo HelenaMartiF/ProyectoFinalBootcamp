@@ -7,7 +7,7 @@ const {
 } = require("../../utils/validators");
 const bcrypt = require("bcrypt");
 
-const register = async (req, res) => {
+const register = async (req, res) => { /* REGISTER */
   /* Crear usuario */
   try {
     const newUser = new User(req.body);
@@ -47,7 +47,7 @@ const register = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+const login = async (req, res) => { /* LOGIN */
   //6.generamos un token para el login generamos la funcion asincrona y lo importamos en users.routes
   try {
     const userInfo = await User.findOne({ email: req.body.email }); //comprobamos si existe lo que le estamos pasando, dentro de mi coleccion busca uno que como campo principal sea el body el email
@@ -69,7 +69,7 @@ const login = async (req, res) => {
   }
 };
 
-const logout = (req, res, next) => {
+const logout = (req, res, next) => { /* LOGOUT */
   // logOut de user
   try {
     const token = null; // eliminamos token
