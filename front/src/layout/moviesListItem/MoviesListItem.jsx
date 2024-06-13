@@ -6,7 +6,7 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import "./moviesListItem.scss"
 
 function MoviesListItem(pelicula) {
-    /* console.log("pinta desde movies", pelicula) */
+
     const [isHoveredMovies, setIsHoveredMovies] = useState(false)
     const trailerMovies = pelicula.pelicula.trailer
 

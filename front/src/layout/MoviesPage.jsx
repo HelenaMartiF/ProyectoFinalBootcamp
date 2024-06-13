@@ -34,8 +34,6 @@ function MoviesPage() {
     return generoSeleccionado === "" || pelicula.genero === generoSeleccionado;
   });
 
-  /* console.log("Películas filtradas:", peliculasFiltradas); // Verifica las películas filtradas */
-
   return (
     <div className="peliculas">
       <Navigator />
