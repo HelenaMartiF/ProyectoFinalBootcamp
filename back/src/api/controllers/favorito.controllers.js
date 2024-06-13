@@ -1,22 +1,20 @@
 const Favorito = require("../models/favorito.model");
 
-const getFavorito = async (req, res) => {
-  /* atacamos a la colección de peliculas */
+const getFavorito = async (req, res) => { /* GET Favoritos, descarga la lista de favoritos vinculada al ID del usuario que esté logeado */
+
   try {
-    console.log(req.user);
-    const allFavorito = await Favorito.find({idUsuario: req.user._id}).populate({
-      path: "arrayIdPeliculas" /* le decimos que nos traiga lo que contiene arrayIdPeliculas */,
-      select: "titulo" /* le decimos que queremos que nos muestre */,
+    /* console.log(req.user); */ /* Imprime datos usuario loggeado */
+    const allFavorito = await Favorito.find({idUsuario: req.user._id}).populate({ /* Buscamos la lista que coincida con el id del usuario */
+      path: "arrayIdPeliculas",
+      select: "titulo",
     });
-    /* console.log(allFavorito) */
     return res.status(200).json(allFavorito);
   } catch (error) {
     return res.status(500).json(error);
   }
 };
 
-const postFavorito = async (req, res) => { /* Crea la lista */
-  /* console.log(req.body); */
+const postFavorito = async (req, res) => { /* Crea la lista de Favoritos si el usuario NO la tiene  */
   try {
     const newFavorito = new Favorito(req.body);
     const createdFavorito = await newFavorito.save();
@@ -29,8 +27,7 @@ const postFavorito = async (req, res) => { /* Crea la lista */
 };
 
 
-const putFavorito = async (req, res) => { /* Añade a la lista */
-  /*   console.log(req.params); */
+const putFavorito = async (req, res) => { /* Añade a la lista del usuario  */
   try {
     const id = req.user._id;
 

@@ -1110,19 +1110,15 @@ const arrayPeliculas =
 ];
 
 mongoose.connect(DB_URL).then(async()=>{
-  const allPeliculas = await Pelicula.find();
-  if(allPeliculas.length > 0) {
-    await Pelicula.collection.drop();
+  const allPeliculas = await Pelicula.find(); /* coge todas las peliculas */
+  if(allPeliculas.length > 0) { /* si peli length > 0 */
+    await Pelicula.collection.drop(); /* borra todo */
     console.log("peliculas borradas");
   }
-}).catch((error)=> console.log("error borrado pelicula", error)).then(async()=>{
+}).catch((error)=> console.log("error borrado pelicula", error)).then(async()=>{ /* si no hay error, arrayPeliculas.map y crea de nuevo todas las películas en la DDBB */
   const peliculaMap = arrayPeliculas.map((pelicula)=> new Pelicula(pelicula));
   await Pelicula.insertMany(peliculaMap);
   console.log("peliculas creadas");
-}).catch((error)=> console.log("error insertando peliculas",error)).finally(()=>
+}).catch((error)=> console.log("error insertando peliculas",error)).finally(()=> /* si no hay error, desconecta de DDBB */
 mongoose.disconnect());
 
-/* esto lo que hace es primero conectarse a la base de datos, según se conecta obtiene todos los libros.
-Cuando el proceso funciona hace un mapeo del array de peliculas y por cada una de las peliculas pasa su validación.
-Si pasan todas las validacion espera a la colección y inserta muchas peliculas, todo el map. Si va bien libros creados
- y pasa a la ultima linea que es finalemente desconectarse de la base de datos */
