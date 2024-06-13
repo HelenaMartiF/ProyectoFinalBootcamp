@@ -14,16 +14,12 @@ function FavPage() {
   const [isHoveredMovies, setIsHoveredMovies] = useState(false)
   
   useEffect(() => {
-    console.log("summoning useEffect");
     const getFavLists = async () => {
       try {
         const response = await API.get("favoritos");
-        /* console.log("Respuesta completa del API:", response); */
+
         if (response.data) {
-          /* console.log("Datos recibidos:", response.data); */
-          /* console.log(response.data[0].arrayIdPeliculas) */
           setListaFav(response.data[0].arrayIdPeliculas);
-          console.log("listaFav", listaFav);
         } else {
           console.log("La respuesta del API no contiene 'data'");
         }
@@ -35,10 +31,8 @@ function FavPage() {
     const getPeliculas = async () => {
       try {
         const response = await API.get("peliculas");
-        /* console.log("Respuesta completa del API:", response); */
         if (response.data) {
           setFindId(response.data);
-          /* console.log('findId', findId) */
         } else {
           console.log("La respuesta del API no contiene 'data'");
         }
@@ -50,7 +44,6 @@ function FavPage() {
     getFavLists();
     getPeliculas();
 
-    /* console.log(findId.filter(pelicula => listaFav.includes(pelicula._id))) */
   }, []);
 
   let result = [];
@@ -58,10 +51,10 @@ function FavPage() {
   if (findId && listaFav) {
     result = findId.filter((movie2) =>
       listaFav.some((movie1) => movie1._id === movie2._id)
-    ); /* .some DEVUELVE LA PRIMERA id que coincida >> pregunta TRAMPA */
+    ); /* .some DEVUELVE LA PRIMERA id que coincida  */
   }
 
-  console.log(result);
+
 
   return (
     <div className="fav_main_container">

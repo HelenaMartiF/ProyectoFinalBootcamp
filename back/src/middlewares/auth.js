@@ -21,7 +21,6 @@ const isAuth = async(req,res,next) => { /* esta función verifica el TOKEN del u
         const userLogged = await User.findById(tokenVerified.id) /* todo va bien? usuario loggeado, comprobar que el usuario existe buscando por id */
         req.user = userLogged /* existe? pues está loggeado */
         
-        /* console.log(tokenVerified.id) */
         next() /* passa a la siguiente funcion */
 
     } catch (error) { /* que algo va mal? */ 

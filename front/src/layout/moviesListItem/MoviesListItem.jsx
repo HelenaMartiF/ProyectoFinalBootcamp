@@ -4,12 +4,27 @@ import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import "./moviesListItem.scss"
+import {API} from '../../services/api'
 
 function MoviesListItem(pelicula) {
 
     const [isHoveredMovies, setIsHoveredMovies] = useState(false)
     const trailerMovies = pelicula.pelicula.trailer
 
+    const handleAddClick = async () => {
+      try {
+        await API.put('favoritos', {
+          arrayIdPeliculas: pelicula.pelicula._id
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}` 
+          }
+        });
+      } catch (error) {
+        console.error('Error en try/catch putFavoritos',error);
+      }
+    }
 
   return (
     <div
@@ -35,7 +50,7 @@ function MoviesListItem(pelicula) {
           <div className="itemInfo_ListItem">
             <div className="icons_ListItem">
               <PlayArrowIcon className="icon_ListItem" />
-              <AddIcon className="icon_ListItem" />
+              <AddIcon className="icon_ListItem" onClick={handleAddClick}/>
               <ThumbUpOffAltIcon className="icon_ListItem" />
               <ThumbDownOffAltIcon className="icon_ListItem" />
             </div>

@@ -3,13 +3,29 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-/* import { API } from '../../services/api'; */
+import { API } from '../../services/api';
 import { useState } from "react";
+
 
 export default function ListItem(item) {
   const [isHovered, setIsHovered] = useState(false);
 
   const trailer = item.item.trailer;
+
+  const handleAddClick = async () => {
+    try {
+      await API.put('favoritos', {
+        arrayIdPeliculas: item.item._id
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div
@@ -33,7 +49,7 @@ export default function ListItem(item) {
           <div className="itemInfo_ListItem">
             <div className="icons_ListItem">
               <PlayArrowIcon className="icon_ListItem" />
-              <AddIcon className="icon_ListItem" />
+              <AddIcon className="icon_ListItem" onClick={handleAddClick} />
               <ThumbUpOffAltIcon className="icon_ListItem" />
               <ThumbDownOffAltIcon className="icon_ListItem" />
             </div>
