@@ -1,8 +1,8 @@
 const Pelicula = require("../models/pelicula.model"); /* importamos el libro modelo */
 const { deleteFile } = require("../../middlewares/delete.file");
 
-
 const getPeliculas = async (req, res) => {
+  /* GET */
   /* atacamos a la colección de peliculas */
   try {
     const allPeliculas = await Pelicula.find(); /* el find lo trae todo */
@@ -13,13 +13,8 @@ const getPeliculas = async (req, res) => {
 };
 
 const postPelicula = async (req, res) => {
-  /* console.log("funciona"); */
   try {
-    /* console.log(req.body); */
-
     const newPelicula = new Pelicula(req.body);
-    /* console.log(req.file); */
-
     if (req.file) {
       newPelicula.portada = req.file.path;
     }
@@ -31,7 +26,6 @@ const postPelicula = async (req, res) => {
 };
 
 const putPelicula = async (req, res) => {
-  /*   console.log(req.params); */
   try {
     const { id } =
       req.params; /* la id que viene de req.params va con {} porque desestruccturamos el objeto */

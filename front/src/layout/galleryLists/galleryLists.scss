@@ -1,50 +1,52 @@
-.list{
-  /*   background-color: var(--main-color); */
-    width: 100%;
-    margin-top: 10px;
+.list {
+  /* MAIN CONTAINER */
+  width: 100%;
+  margin-top: 10px;
 }
 
-.listTitle{
-    color: white;
-    font-size: 20px;
+.listTitle {
+  /* TITULO LISTAS */
+  color: white;
+  font-size: 20px;
 
-    font-weight: 500;
-    margin-left: 50px;
+  font-weight: 500;
+  margin-left: 50px;
 }
 
 .wrapper_lists {
-    position: relative;
+  /* TIRA LISTAS */
+  position: relative;
 
-    .sliderArrow {
-      width: 50px;
-      height: 100%;
-      background-color: rgb(22, 22, 22, 0.5);
-      color: white;
-      position: absolute; /* ESTE NO ES */
-      z-index: 99;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-      cursor: pointer;
+  .sliderArrow {
+    /* FLECHAS LADOS */
+    width: 50px;
+    height: 100%;
+    background-color: rgb(22, 22, 22, 0.5);
+    color: white;
+    position: absolute; /* ESTE NO ES */
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
 
-      &.left {
-        left: 0;
-      }
+    &.left {
+      left: 0;
+    }
 
-      &.right {
-        right: 0;
-      }
+    &.right {
+      right: 0;
+    }
+  }
 }
-}
-
 
 .container_galleryLists {
-    margin-left: 50px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-    width: max-content;
-    transform: translateX(0px);
-    transition: all 1s ease;
-  }
-
+  /* CONTAINER ITEMS */
+  margin-left: 50px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  width: max-content;
+  transform: translateX(0px);
+  transition: all 1s ease;
+}

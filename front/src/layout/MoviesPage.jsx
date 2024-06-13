@@ -15,7 +15,6 @@ function MoviesPage() {
       try {
         const res = await API.get("peliculas");
         setPeliculas(res.data);
-        /* console.log("Películas recibidas:", res.data); // Verifica los datos recibidos */
       } catch (error) {
         console.log("Error en tryCatch MoviesPage", error);
       }
@@ -26,7 +25,6 @@ function MoviesPage() {
 
   /* FILTRO */
   const handleGeneroChange = (genero) => {
-    console.log("Género seleccionado:", genero); // Verifica el género seleccionado
     setGeneroSeleccionado(genero);
   };
 
@@ -42,7 +40,7 @@ function MoviesPage() {
       <div className="main_peliculas">
         {peliculasFiltradas.length > 0 ? (
           peliculasFiltradas.map((pelicula, index) => (
-            <MoviesListItem key={index} pelicula={pelicula}/>
+            <MoviesListItem key={index} pelicula={pelicula} />
           ))
         ) : (
           <p>No se encontraron películas para el género seleccionado.</p>

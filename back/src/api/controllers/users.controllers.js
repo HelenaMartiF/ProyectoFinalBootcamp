@@ -8,31 +8,25 @@ const {
 const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
-  /* Crear usuario */
+  /* REGISTER */
   try {
     const newUser = new User(req.body);
     if (!validateEmail(newUser.email)) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "El email introducido no cumple con los parámetros requeridos.",
-        }); /* si la validación no pasa, error. */
+      return res.status(400).json({
+        message:
+          "El email introducido no cumple con los parámetros requeridos.",
+      }); /* si la validación no pasa, error. */
     }
     if (!validatePassword(newUser.password)) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "La contraseña introducida no cumple con los parámetros requeridos: minúscula, mayúscula, un número y un carácter especial. ",
-        }); /* si la validacion de password no pasa, error */
+      return res.status(400).json({
+        message:
+          "La contraseña introducida no cumple con los parámetros requeridos: minúscula, mayúscula, un número y un carácter especial. ",
+      }); /* si la validacion de password no pasa, error */
     }
     if (await usedEmail(newUser.email)) {
-      return res
-        .status(400)
-        .json({
-          message: "El email introducido ya se encuentra en uso.",
-        }); /* si no pasa validación, error */
+      return res.status(400).json({
+        message: "El email introducido ya se encuentra en uso.",
+      }); /* si no pasa validación, error */
     }
 
     const salt = 10;
@@ -48,10 +42,10 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
+  /* LOGIN */
   //6.generamos un token para el login generamos la funcion asincrona y lo importamos en users.routes
   try {
     const userInfo = await User.findOne({ email: req.body.email }); //comprobamos si existe lo que le estamos pasando, dentro de mi coleccion busca uno que como campo principal sea el body el email
-    //console.log(userInfo);
     if (!userInfo) {
       //si no existe nos devuelve el error
       return res.status(404).json({ message: "email no existe" });
@@ -60,9 +54,7 @@ const login = async (req, res) => {
       //comprobamos que las contraseñas sean iguales y compara lo que viene del body con el user info
       return res.status(404).json({ message: "el password no es correcto" });
     }
-    //7.en la carpeta util creamos jwt para crear el token
     const token = generateSign(userInfo._id, userInfo.email); //8.vamos a generar el token que recibe un id y un email
-    //console.log(token);
     return res.status(200).json({ user: userInfo, token: token });
   } catch (error) {
     return res.status(500).json(error);
@@ -70,7 +62,7 @@ const login = async (req, res) => {
 };
 
 const logout = (req, res, next) => {
-  // logOut de user
+  /* LOGOUT */
   try {
     const token = null; // eliminamos token
     return res.status(200).json({

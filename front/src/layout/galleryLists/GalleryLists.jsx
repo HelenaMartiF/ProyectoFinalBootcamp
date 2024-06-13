@@ -4,9 +4,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ListItem from "../listItem/ListItem";
 import { useRef, useState } from "react";
 
-
 function GalleryLists(lista) {
-  
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
 

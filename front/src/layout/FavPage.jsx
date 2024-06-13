@@ -11,8 +11,8 @@ import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 function FavPage() {
   const [listaFav, setListaFav] = useState();
   const [findId, setFindId] = useState();
-  const [isHoveredMovies, setIsHoveredMovies] = useState(false)
-  
+  const [isHoveredMovies, setIsHoveredMovies] = useState(false);
+
   useEffect(() => {
     const getFavLists = async () => {
       try {
@@ -43,7 +43,6 @@ function FavPage() {
 
     getFavLists();
     getPeliculas();
-
   }, []);
 
   let result = [];
@@ -53,8 +52,6 @@ function FavPage() {
       listaFav.some((movie1) => movie1._id === movie2._id)
     ); /* .some DEVUELVE LA PRIMERA id que coincida  */
   }
-
-
 
   return (
     <div className="fav_main_container">
@@ -75,7 +72,7 @@ function FavPage() {
               >
                 {/* Imagen de la película */}
                 <img src={pelicula.portada} alt={pelicula.titulo} />
-  
+
                 {/* Detalles adicionales y trailer */}
                 {isHoveredMovies && (
                   <>
@@ -97,9 +94,7 @@ function FavPage() {
                       </div>
                       <div className="itemInfoTop_Favoritos">
                         <span>{pelicula.duracion}</span>
-                        <span className="limit_Favoritos">
-                          {pelicula.tipo}
-                        </span>
+                        <span className="limit_Favoritos">{pelicula.tipo}</span>
                         <span>{pelicula.fecha}</span>
                       </div>
                       <div className="desc_Favoritos">
@@ -114,7 +109,6 @@ function FavPage() {
       </div>
     </div>
   );
-}  
+}
 
 export default FavPage;
-

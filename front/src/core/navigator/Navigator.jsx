@@ -30,9 +30,6 @@ const Navigator = () => {
     navigate("/");
   };
 
-  {
-    /* cuando el user está LOGEADO --> aparece gallery/favoritos/películas(filtrado por genero) */
-  }
   return (
     <>
       <div className={isScrolled ? "main_navBar scrolled" : "main_navBar"}>
@@ -56,7 +53,6 @@ const Navigator = () => {
             <SearchIcon className="icons" />
             <NotificationsNoneIcon className="icons" />
             <LogoutIcon className="icons" onClick={handleLogout} />
-            {/* BOTON DE LOGGOUT, inicias en home = inicio, loggin --> Gallery = logout --> inicio */}
           </div>
         </div>
       </div>

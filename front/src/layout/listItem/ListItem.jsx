@@ -3,9 +3,8 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
-import { API } from '../../services/api';
+import { API } from "../../services/api";
 import { useState } from "react";
-
 
 export default function ListItem(item) {
   const [isHovered, setIsHovered] = useState(false);
@@ -14,14 +13,18 @@ export default function ListItem(item) {
 
   const handleAddClick = async () => {
     try {
-      await API.put('favoritos', {
-        arrayIdPeliculas: item.item._id
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+      await API.put(
+        "favoritos",
+        {
+          arrayIdPeliculas: item.item._id,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
-      });
+      );
     } catch (error) {
       console.error(error);
     }

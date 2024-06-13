@@ -27,7 +27,7 @@ const peliculaSchema = new Schema(
       ],
       require: true,
     } /*para elegir una serie de categorias*/,
-    fecha: { 
+    fecha: {
       type: String,
       require: true,
     },
@@ -52,7 +52,7 @@ const peliculaSchema = new Schema(
     trailer: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true /*cuando tenemos una base de datos que se modifica, el timestamp te dice la fecha en la que actualiza y en la que crea*/,
@@ -64,4 +64,5 @@ const Pelicula = mongoose.model(
   peliculaSchema
 ); /*almacenamos en una constante , que utiliza el modelo peliculaSchema*/
 
-module.exports = Pelicula; /*lo exportamos porque aqui no lo vamos a utilizar, a este modelo lo llamamos en peliculas.controllers*/
+module.exports =
+  Pelicula; /*lo exportamos porque aqui no lo vamos a utilizar, a este modelo lo llamamos en peliculas.controllers*/

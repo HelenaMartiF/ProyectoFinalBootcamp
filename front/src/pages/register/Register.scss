@@ -86,20 +86,20 @@
   position: relative;
 
   .footer-content {
-      text-align: center;
+    text-align: center;
 
-      p {
-          margin: 5px 0;
+    p {
+      margin: 5px 0;
+    }
+
+    a {
+      color: green;
+      text-decoration: none;
+      margin: 0 5px;
+
+      &:hover {
+        text-decoration: underline;
       }
-
-      a {
-          color: green;
-          text-decoration: none;
-          margin: 0 5px;
-
-          &:hover {
-              text-decoration: underline;
-          }
-      }
+    }
   }
 }

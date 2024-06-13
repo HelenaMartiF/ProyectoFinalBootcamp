@@ -5,7 +5,11 @@ import { useState } from "react";
 import "./Register.scss";
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,15 +18,19 @@ const Register = () => {
     API.post("users/register", formData)
       .then((res) => {
         setIsLoading(false);
- /*        alert("Usuario registrado con éxito"); */
         navigate("/login");
       })
       .catch((error) => {
         setIsLoading(false);
         if (error.response && error.response.data) {
-          if (error.response.data.message === "Password does not meet requirements") {
+          if (
+            error.response.data.message ===
+            "Password does not meet requirements"
+          ) {
             alert("La contraseña no cumple con los requisitos");
-          } else if (error.response.data.message === "Email does not meet requirements") {
+          } else if (
+            error.response.data.message === "Email does not meet requirements"
+          ) {
             alert("El email no cumple con los requisitos");
           } else {
             alert("Ha ocurrido un error en el registro");
@@ -74,7 +82,9 @@ const Register = () => {
             {...register("email", { required: true })}
           />
           {errors.email && errors.email.type === "required" && (
-            <p className="error">Por favor, introduzca su correo electrónico.</p>
+            <p className="error">
+              Por favor, introduzca su correo electrónico.
+            </p>
           )}
           {errors.email && errors.email.type !== "required" && (
             <p className="error">El email no cumple con los requisitos.</p>

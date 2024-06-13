@@ -3,7 +3,6 @@ const Favorito = require("../models/favorito.model");
 const getFavorito = async (req, res) => { /* GET Favoritos, descarga la lista de favoritos vinculada al ID del usuario que esté logeado */
 
   try {
-    /* console.log(req.user); */ /* Imprime datos usuario loggeado */
     const allFavorito = await Favorito.find({idUsuario: req.user._id}).populate({ /* Buscamos la lista que coincida con el id del usuario */
       path: "arrayIdPeliculas",
       select: "titulo",
@@ -27,7 +26,7 @@ const postFavorito = async (req, res) => { /* Crea la lista de Favoritos si el u
 };
 
 
-const putFavorito = async (req, res) => { /* Añade a la lista del usuario  */
+const putFavorito = async (req, res) => { /* Añade favorito a la lista  */
   try {
     const id = req.user._id;
 
@@ -69,7 +68,7 @@ const putFavorito = async (req, res) => { /* Añade a la lista del usuario  */
   }
 };
 
-const deleteFavorito = async (req, res) => {
+const deleteFavorito = async (req, res) => { /* Elimina favorito de la lista */
   try {
     const userId = req.user._id; // Obtener el ID del usuario desde el token de autenticación
     /*       console.log('User ID:', userId); */
@@ -122,6 +121,5 @@ const deleteFavorito = async (req, res) => {
   }
 };
 
-module.exports = deleteFavorito;
 
 module.exports = { getFavorito, postFavorito, deleteFavorito, putFavorito };
