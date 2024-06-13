@@ -3,6 +3,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './sliderMovies.scss';
 
+// eslint-disable-next-line react/prop-types
 function SliderMovies( {onGeneroChange} ) {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -41,8 +42,11 @@ function SliderMovies( {onGeneroChange} ) {
             <option value="Terror">Terror</option>
         </select>
       </div>
-      <img className='main_container_img_sliderMovies' src="./bannerInicio2.jpg" alt="Banner"/>
-      
+      {/* <img className='main_container_img_sliderMovies' src="./bannerInicio2.jpg" alt="Banner"/> */}
+      <video className="main_container_img_sliderMovies" controls autoPlay loop muted poster="video-poster.jpg">
+    <source src="illangTrailer.mp4" type="video/mp4"/>
+    Tu navegador no soporta el elemento de video.
+    </video>
       <div className='info_sliderMovies'>
         <img className='info_img_sliderMovies' src="./brigada3.png" alt="Brigada"/>
         <span className='desc_sliderMovies'>

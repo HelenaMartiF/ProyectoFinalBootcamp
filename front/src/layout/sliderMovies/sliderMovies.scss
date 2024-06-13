@@ -1,6 +1,8 @@
 .main_container_sliderMovies{
     height: 100vh;
-    position: relative;    /* ESTE NO ES */
+    position: relative;  
+    display: flex;
+    flex-wrap: wrap;  
 }
 
 /* Imagen slider FONDO */
@@ -20,10 +22,6 @@
     color: white;
     display: flex;
     align-items: center;
-
-    /* &.scrolled{
-        background-color: var(--main-color);
-      } */
 
     /* Desplegable categorias */    
     select{
